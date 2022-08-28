@@ -2,7 +2,7 @@
 	import { cubicInOut } from 'svelte/easing';
 	import { fade, crossfade } from 'svelte/transition';
 	import Scroller from '$lib/Scroller.svelte';
-	import data from '../../../img/faces/faces.json';
+	import { faces as data } from '../../../img/faces/faces.js';
 
 	const images = import.meta.globEager('../../../img/faces/*.png', {
 		as: 'w=960&h=1200&webp&metadata'
@@ -27,17 +27,18 @@
 		easing: cubicInOut
 	});
 
-	function onThumbClick(face) {
-		activeImage = face;
-		lightboxActive = true;
+	function showFace(id) {
+		const face = faces.find((f) => f.id === id);
 		face.active = true;
 		faces = [...faces];
+		lightboxActive = true;
 	}
 
-	function onActiveClick(face) {
-		lightboxActive = false;
+	function hideFace() {
+		const face = faces.find((f) => f.active);
 		face.active = false;
 		faces = [...faces];
+		lightboxActive = false;
 	}
 
 	function advance(step) {
@@ -57,7 +58,7 @@
 		}
 		switch (e.key) {
 			case 'Escape':
-				onActiveClick(activeImage);
+				hideFace();
 				break;
 			case 'ArrowLeft':
 				advance(-1);
@@ -69,21 +70,22 @@
 	}
 </script>
 
-<Scroller width="100%">
+<Scroller width="40rem">
 	<div class="gallery" class:visible={!lightboxActive}>
 		<h1>Faces</h1>
 		<ul>
-			{#each faces as face (face.id)}
+			{#each faces as { id, name, src, thumb, active } (id)}
 				<li>
-					<a href={face.src} target="_blank" on:click|preventDefault={() => onThumbClick(face)}>
-						{#if !face.active}
+					<a href={src} target="_blank" on:click|preventDefault={() => showFace(id)}>
+						{#if !active}
 							<img
-								alt={face.name}
-								src={face.thumb}
+								src={thumb}
+								alt={`${name}.`}
+								loading="lazy"
 								width="240"
 								height="300"
-								in:receive={{ key: face.id }}
-								out:send={{ key: face.id }}
+								in:receive={{ key: id }}
+								out:send={{ key: id }}
 							/>
 						{/if}
 					</a>
@@ -93,26 +95,29 @@
 	</div>
 
 	<div class="lightbox" class:visible={lightboxActive}>
-		{#each faces.filter((f) => f.active) as face (face.id)}
+		{#each faces.filter((f) => f.active) as { id, name, src, date, caption } (id)}
 			<div class="right" in:fade={{ duration: 250, delay: 500 }} out:fade={{ duration: 250 }}>
-				<h2>{face.name}.</h2>
-				<p class="date">{face.date}</p>
-				<p>“{face.caption}”</p>
+				<h2>{name}.</h2>
+				<p class="date">{date}</p>
+				{#if caption}
+					<p class="caption">“{caption}”</p>
+				{/if}
 				<p>
-					<a href="https://instagram.com/p/${face.id}" rel="external" target="_blank"
+					<a href="https://instagram.com/p/${id}" rel="external" target="_blank"
 						>View on Instagram</a
 					>
 				</p>
 			</div>
 			<div class="left">
 				<img
-					alt={face.name}
-					src={face.src}
+					{src}
+					alt={`${name}.`}
+					loading="lazy"
 					width="480"
 					height="600"
-					in:receive={{ key: face.id }}
-					out:send={{ key: face.id }}
-					on:click|preventDefault={() => onActiveClick(face)}
+					in:receive={{ key: id }}
+					out:send={{ key: id }}
+					on:click|preventDefault={() => hideFace()}
 				/>
 			</div>
 		{/each}
