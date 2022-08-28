@@ -12,7 +12,7 @@
 	--light-color-line: rgba(0, 0, 0, 0.1);
 	--light-color-bullet: rgba(0, 0, 0, 0.2);
 	--light-color-arrow: rgba(0, 0, 0, 0.2);
-	--light-image-filter: saturate(150%);
+	--light-image-filter: saturate(125%);
 	--light-body-gradient: radial-gradient(
 		circle at center 8rem,
 		rgba(255, 255, 255, 0.75),

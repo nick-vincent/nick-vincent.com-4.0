@@ -25,8 +25,7 @@
 	<p>I’m also known to:</p>
 	<ul class="bullet">
 		<li>
-			<a href="https://instagram.com/im.still.in.beta/" rel="external" target="_blank">make faces</a
-			>
+			<a sveltekit:prefetch href="/etcetera/rock-out/">rock out</a>
 		</li>
 		<li>
 			<a href="https://instagram.com/the.nick.vincent/" rel="external" target="_blank"

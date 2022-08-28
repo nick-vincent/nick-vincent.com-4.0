@@ -1,5 +1,9 @@
+<script>
+	export let width = '15rem';
+</script>
+
 <div class="scroller">
-	<div class="inner">
+	<div class="inner" style={`max-width: ${width};`}>
 		<slot />
 	</div>
 </div>
@@ -25,7 +29,6 @@
 		display: flex;
 		flex-direction: column;
 		place-content: center;
-		max-width: 15rem;
 		min-height: 100%;
 		margin: 0 auto;
 	}
