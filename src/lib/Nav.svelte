@@ -1,5 +1,6 @@
 <script>
 	import MenuToggle from '$lib/MenuToggle.svelte';
+	import DarkModeToggle from '$lib/DarkModeToggle.svelte';
 
 	export let open = false;
 
@@ -41,6 +42,8 @@
 		{/each}
 	</ul>
 </nav>
+
+<DarkModeToggle />
 
 <style>
 	nav {
