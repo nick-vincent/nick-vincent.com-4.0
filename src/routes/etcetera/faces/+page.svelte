@@ -2,12 +2,25 @@
 	import { cubicInOut } from 'svelte/easing';
 	import { fade, crossfade } from 'svelte/transition';
 	import Scroller from '$lib/Scroller.svelte';
+	import data from '../../../img/faces/faces.json';
 
-	import data from '../../../json/faces.json';
+	const images = import.meta.globEager('../../../img/faces/*.png', {
+		as: 'w=960&h=1200&webp&metadata'
+	});
+	const thumbs = import.meta.globEager('../../../img/faces/*.png', {
+		as: 'w=200&h=250&webp&metadata'
+	});
 
 	let activeImage;
 	let lightboxActive = false;
 	let faces = [...data];
+
+	for (const face of faces) {
+		const image = images[`../../../img/faces/${face.slug}.png`];
+		const thumb = thumbs[`../../../img/faces/${face.slug}.png`];
+		face.src = image.src;
+		face.thumb = thumb.src;
+	}
 
 	const [send, receive] = crossfade({
 		duration: 500,
@@ -27,9 +40,31 @@
 		faces = [...faces];
 	}
 
+	function advance(step) {
+		const active = faces.find((face) => face.active);
+		const activeIndex = faces.indexOf(active);
+		const nextIndex = Math.min(Math.max(activeIndex + step, 0), faces.length - 1);
+		const next = faces[nextIndex];
+		active.active = false;
+		next.active = true;
+		activeImage = next;
+		faces = [...faces];
+	}
+
 	function onKeyUp(e) {
-		if (e.key === 'Escape') {
-			onActiveClick(activeImage);
+		if (!lightboxActive) {
+			return;
+		}
+		switch (e.key) {
+			case 'Escape':
+				onActiveClick(activeImage);
+				break;
+			case 'ArrowLeft':
+				advance(-1);
+				break;
+			case 'ArrowRight':
+				advance(1);
+				break;
 		}
 	}
 </script>
@@ -44,9 +79,9 @@
 						{#if !face.active}
 							<img
 								alt={face.name}
-								src={face.src}
-								width="2640"
-								height="3300"
+								src={face.thumb}
+								width="240"
+								height="300"
 								in:receive={{ key: face.id }}
 								out:send={{ key: face.id }}
 							/>
@@ -73,8 +108,8 @@
 				<img
 					alt={face.name}
 					src={face.src}
-					width="2640"
-					height="3300"
+					width="480"
+					height="600"
 					in:receive={{ key: face.id }}
 					out:send={{ key: face.id }}
 					on:click|preventDefault={() => onActiveClick(face)}
@@ -132,8 +167,8 @@
 		pointer-events: none;
 		z-index: 2;
 		position: fixed;
-		display: flex;
-		flex-wrap: wrap;
+		display: grid;
+		grid-auto-flow: column;
 		justify-content: center;
 		gap: 1rem;
 		inset: 0;
@@ -147,16 +182,26 @@
 
 	.left {
 		order: 1;
-		flex-shrink: 0;
+		grid-column-start: 1;
+		grid-row-start: 1;
 	}
 	.right {
 		order: 2;
 		max-width: 15rem;
+		grid-column-start: 2;
+		grid-row-start: 1;
 	}
 
 	.lightbox img {
 		width: calc(100vw - 2rem);
 		max-width: 20rem;
 		border-radius: 1rem;
+	}
+
+	@media (max-width: 800px) {
+		.lightbox {
+			display: flex;
+			flex-wrap: wrap;
+		}
 	}
 </style>
