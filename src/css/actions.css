@@ -1,0 +1,52 @@
+a,
+button {
+	display: inline-block;
+	cursor: pointer;
+	padding: 0;
+	margin: 0;
+	background: none;
+	font: inherit;
+	font-weight: 600;
+	text-decoration: none;
+	border: none;
+}
+
+a::after,
+button::after {
+	pointer-events: none;
+	content: '\2192';
+	display: inline;
+	position: absolute;
+	font-weight: 400;
+	opacity: 0;
+	transform: translateX(-0.15em);
+	transition: var(--transition-dom-x-ray),
+		opacity var(--duration-arrow-out) var(--easing-accelerate),
+		transform var(--duration-arrow-out) var(--easing-arrow-out);
+}
+
+a:focus-visible::after,
+button:focus-visible::after {
+	opacity: 1;
+	transform: translateX(0.15em);
+	transition: var(--transition-dom-x-ray), opacity var(--duration-arrow-in) var(--easing-decelerate),
+		transform var(--duration-arrow-in) var(--easing-arrow-in);
+}
+
+@media (hover: hover) {
+	a:hover::after,
+	button:hover::after {
+		opacity: 1;
+		transform: translateX(0.15em);
+		transition: var(--transition-dom-x-ray),
+			opacity var(--duration-arrow-in) var(--easing-decelerate),
+			transform var(--duration-arrow-in) var(--easing-arrow-in);
+	}
+}
+
+@media print {
+	a::after,
+	button::after {
+		display: none !important;
+	}
+}

@@ -19,3 +19,9 @@
 </h2>
 <p>Associate of Applied Science in&nbsp;Web&nbsp;Design</p>
 <p class="date">Dec 2003</p>
+
+<style>
+	h2 {
+		font-size: 1.25rem;
+	}
+</style>

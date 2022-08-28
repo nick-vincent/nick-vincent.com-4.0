@@ -1,0 +1,44 @@
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+	outline: 1px solid rgba(255, 105, 180, 0);
+}
+
+html {
+	width: 100%;
+	height: 100%;
+}
+
+html::after {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+body::before,
+body::after {
+	z-index: 1;
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+@page {
+	margin: 1in;
+}

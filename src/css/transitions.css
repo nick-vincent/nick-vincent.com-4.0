@@ -1,0 +1,27 @@
+:root {
+	--easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
+	--easing-decelerate: cubic-bezier(0, 0, 0.2, 1);
+	--easing-accelerate: cubic-bezier(0.4, 0, 1, 1);
+	--easing-sharp: cubic-bezier(0.4, 0, 0.6, 1);
+
+	--duration-image: 1000ms;
+	--easing-image: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+	--duration-arrow-in: 500ms;
+	--duration-arrow-out: 250ms;
+	--easing-arrow-in: cubic-bezier(0, 2, 1, 2);
+	--easing-arrow-out: cubic-bezier(0, -1, 1, -1);
+
+	--duration-menu: 150ms;
+
+	--transition-dom-x-ray: color 1s var(--easing-standard), border-color 1s var(--easing-standard),
+		background-color 1s var(--easing-standard), outline-color 1s var(--easing-standard),
+		opacity 1s var(--easing-standard), visibility 1s var(--easing-standard),
+		filter 1s var(--easing-standard), transform 1s var(--easing-standard);
+}
+
+*,
+*::after,
+*::before {
+	transition: var(--transition-dom-x-ray);
+}

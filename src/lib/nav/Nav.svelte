@@ -17,3 +17,11 @@
 		{/each}
 	</ul>
 </nav>
+
+<style>
+	/* TODO: add nav styles */
+	nav {
+		position: relative;
+		z-index: 3;
+	}
+</style>

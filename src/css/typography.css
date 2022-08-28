@@ -1,0 +1,83 @@
+html {
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell,
+		'Helvetica Neue', sans-serif;
+	font-size: clamp(16px, 5vw, 24px);
+	line-height: 1.5;
+	font-weight: 400;
+}
+
+h1 {
+	margin: 0;
+	padding: 0;
+	font-size: 3rem;
+	line-height: 1.25;
+	font-weight: 600;
+	letter-spacing: -0.1rem;
+}
+
+h2 {
+	margin: 0;
+	padding: 0;
+	font-size: 1.5rem;
+	line-height: 1.25;
+	font-weight: 600;
+	letter-spacing: -0.025rem;
+}
+
+p {
+	padding: 0;
+	margin: 1rem 0 0;
+}
+
+hr {
+	border: none;
+	border-bottom: 0.05rem solid var(--color-line);
+	width: 100%;
+	margin: 2rem 0;
+}
+
+h1 + h2 {
+	margin-top: 2rem;
+}
+
+h2 + p {
+	margin-top: 0;
+}
+
+p + h2 {
+	margin-top: 2rem;
+}
+
+ul {
+	display: block;
+	margin: 1rem 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+li {
+	position: relative;
+	padding: 0;
+}
+
+ul.spread li:not(:last-child) {
+	margin: 0 0 1rem;
+}
+
+ul.bullet {
+	padding: 0 0 0 1rem;
+}
+
+ul.bullet li::before {
+	content: '\2022';
+	display: inline-block;
+	position: absolute;
+	width: 1rem;
+	left: -1rem;
+}
+
+.date {
+	margin-top: 0;
+	font-size: 0.75rem;
+	font-style: italic;
+}

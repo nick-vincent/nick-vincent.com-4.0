@@ -1,0 +1,13 @@
+@media screen {
+	.dom-x-ray,
+	.dom-x-ray:before,
+	.dom-x-ray:after,
+	.dom-x-ray *,
+	.dom-x-ray *:before,
+	.dom-x-ray *:after {
+		color: rgba(255, 105, 180, 1) !important;
+		border-color: rgba(255, 105, 180, 1) !important;
+		background-color: rgba(112, 187, 255, 0.03) !important;
+		outline-color: rgba(255, 105, 180, 0.25) !important;
+	}
+}

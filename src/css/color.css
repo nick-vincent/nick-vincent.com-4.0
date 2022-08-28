@@ -1,0 +1,205 @@
+:root {
+	/* light mode vars */
+	--light-html-gradient-opacity: 0.75;
+	--light-color-background: rgba(255, 255, 255, 0.9);
+	--light-color-ui: rgba(0, 0, 0, 0.75);
+	--light-color-ui-invert: rgba(255, 255, 255, 0.75);
+	--light-color-text: rgba(0, 0, 0, 0.65);
+	--light-color-h1: rgba(0, 0, 0, 0.75);
+	--light-color-h2: rgba(0, 0, 0, 0.7);
+	--light-color-link: rgba(60, 120, 180, 0.8);
+	--light-color-date: rgba(0, 0, 0, 0.4);
+	--light-color-line: rgba(0, 0, 0, 0.1);
+	--light-color-bullet: rgba(0, 0, 0, 0.2);
+	--light-color-arrow: rgba(0, 0, 0, 0.2);
+	--light-image-filter: saturate(150%);
+	--light-body-gradient: radial-gradient(
+		circle at center 8rem,
+		rgba(255, 255, 255, 0.75),
+		rgba(255, 255, 255, 0)
+	);
+
+	/* dark mode vars */
+	--dark-html-gradient-opacity: 0.25;
+	--dark-color-background: rgba(0, 0, 0, 0.9);
+	--dark-color-ui: rgba(255, 255, 255, 0.75);
+	--dark-color-ui-invert: rgba(0, 0, 0, 0.75);
+	--dark-color-text: rgba(255, 255, 255, 0.65);
+	--dark-color-h1: rgba(255, 255, 255, 0.75);
+	--dark-color-h2: rgba(255, 255, 255, 0.7);
+	--dark-color-link: rgb(94, 167, 255, 0.75);
+	--dark-color-date: rgba(255, 255, 255, 0.35);
+	--dark-color-line: rgba(255, 255, 255, 0.1);
+	--dark-color-bullet: rgba(255, 255, 255, 0.25);
+	--dark-color-arrow: rgba(255, 255, 255, 0.15);
+	--dark-image-filter: saturate(90%);
+	--dark-body-gradient: radial-gradient(
+		circle at center 8rem,
+		rgba(0, 0, 0, 0.25),
+		rgba(0, 0, 0, 0.75)
+	);
+
+	/* default vars */
+	--html-gradient: linear-gradient(
+		to bottom,
+		rgb(91, 107, 196) 0%,
+		rgb(176, 167, 202) 50%,
+		rgb(186, 150, 152) 100%
+	);
+	--html-gradient-opacity: var(--light-html-gradient-opacity);
+	--color-background: var(--light-color-background);
+	--color-ui: var(--light-color-ui);
+	--color-ui-invert: var(--light-color-ui-invert);
+	--color-text: var(--light-color-text);
+	--color-h1: var(--light-color-h1);
+	--color-h2: var(--light-color-h2);
+	--color-link: var(--light-color-link);
+	--color-date: var(--light-color-date);
+	--color-line: var(--light-color-line);
+	--color-bullet: var(--light-color-bullet);
+	--color-arrow: var(--light-color-arrow);
+	--image-filter: var(--light-image-filter);
+	--light-body-gradient-opacity: 1;
+	--dark-body-gradient-opacity: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--html-gradient-opacity: var(--dark-html-gradient-opacity);
+		--color-background: var(--dark-color-background);
+		--color-ui: var(--dark-color-ui);
+		--color-ui-invert: var(--dark-color-ui-invert);
+		--color-text: var(--dark-color-text);
+		--color-h1: var(--dark-color-h1);
+		--color-h2: var(--dark-color-h2);
+		--color-link: var(--dark-color-link);
+		--color-date: var(--dark-color-date);
+		--color-line: var(--dark-color-line);
+		--color-bullet: var(--dark-color-bullet);
+		--color-arrow: var(--dark-color-arrow);
+		--image-filter: var(--dark-image-filter);
+		--light-body-gradient-opacity: 0;
+		--dark-body-gradient-opacity: 1;
+	}
+}
+
+@media print {
+	:root {
+		--html-gradient-opacity: 0;
+		--color-background: transparent;
+		--color-ui: transparent;
+		--color-ui-invert: transparent;
+		--color-text: black;
+		--color-h1: black;
+		--color-h2: black;
+		--color-link: black;
+		--color-date: black;
+		--color-line: black;
+		--color-bullet: black;
+		--color-arrow: black;
+		--image-filter: none;
+		--light-body-gradient-opacity: 0;
+		--dark-body-gradient-opacity: 0;
+	}
+}
+
+.light {
+	--html-gradient-opacity: var(--light-html-gradient-opacity);
+	--color-background: var(--light-color-background);
+	--color-ui: var(--light-color-ui);
+	--color-ui-invert: var(--light-color-ui-invert);
+	--color-text: var(--light-color-text);
+	--color-h1: var(--light-color-h1);
+	--color-h2: var(--light-color-h2);
+	--color-link: var(--light-color-link);
+	--color-date: var(--light-color-date);
+	--color-line: var(--light-color-line);
+	--color-bullet: var(--light-color-bullet);
+	--color-arrow: var(--light-color-arrow);
+	--image-filter: var(--light-image-filter);
+	--light-body-gradient-opacity: 1;
+	--dark-body-gradient-opacity: 0;
+}
+
+.dark {
+	--html-gradient-opacity: var(--dark-html-gradient-opacity);
+	--color-background: var(--dark-color-background);
+	--color-ui: var(--dark-color-ui);
+	--color-ui-invert: var(--dark-color-ui-invert);
+	--color-text: var(--dark-color-text);
+	--color-h1: var(--dark-color-h1);
+	--color-h2: var(--dark-color-h2);
+	--color-link: var(--dark-color-link);
+	--color-date: var(--dark-color-date);
+	--color-line: var(--dark-color-line);
+	--color-bullet: var(--dark-color-bullet);
+	--color-arrow: var(--dark-color-arrow);
+	--image-filter: var(--dark-image-filter);
+	--light-body-gradient-opacity: 0;
+	--dark-body-gradient-opacity: 1;
+}
+
+*,
+*::after,
+*::before {
+	-webkit-tap-highlight-color: transparent;
+}
+
+html {
+	color: var(--color-text);
+	background-color: var(--color-background);
+}
+
+html::after {
+	background-image: var(--html-gradient);
+	opacity: var(--html-gradient-opacity);
+}
+
+/* light mode */
+body::before {
+	background-image: var(--light-body-gradient);
+	opacity: var(--light-body-gradient-opacity);
+}
+
+/* dark mode */
+body::after {
+	background-image: var(--dark-body-gradient);
+	opacity: var(--dark-body-gradient-opacity);
+}
+
+h1 {
+	color: var(--color-h1);
+}
+
+h2 {
+	color: var(--color-h2);
+	border-color: var(--color-line);
+}
+
+p,
+ul,
+li {
+	color: var(--color-text);
+}
+
+li::before {
+	color: var(--color-bullet);
+}
+
+.date {
+	color: var(--color-date);
+}
+
+a,
+button {
+	color: var(--color-link);
+}
+
+a::after,
+button::after {
+	color: var(--color-arrow);
+}
+
+img {
+	filter: var(--image-filter);
+}
