@@ -1,5 +1,5 @@
 <script>
-	import { sineInOut } from 'svelte/easing';
+	import { sineIn, sineOut } from 'svelte/easing';
 
 	export let pathname = '';
 
@@ -11,6 +11,7 @@
 				const eased = easing(t);
 				return `
 					opacity: ${eased};
+					scale: ${0.9 + 0.1 * eased};
 					filter: blur(${1 - eased}rem);
 				`;
 			}
@@ -24,6 +25,7 @@
 				const eased = easing(t);
 				return `
 					opacity: ${eased};					
+					scale: ${0.9 + 0.1 * eased};
 					filter: blur(${1 - eased}rem);
 				`;
 			}
@@ -34,8 +36,8 @@
 {#key pathname}
 	<div
 		class="transition"
-		in:fadeIn={{ duration: 500, delay: 500, easing: sineInOut }}
-		out:fadeOut={{ duration: 500, easing: sineInOut }}
+		in:fadeIn={{ duration: 500, delay: 500, easing: sineOut }}
+		out:fadeOut={{ duration: 500, easing: sineIn }}
 	>
 		<slot />
 	</div>
