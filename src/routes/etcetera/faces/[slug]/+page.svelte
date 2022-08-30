@@ -13,11 +13,11 @@
 
 	const imagePath = `../../../../img/faces/${slug}.png`;
 	const image = import.meta.globEager('../../../../img/faces/*.png', {
-		as: 'w=960&h=1200&webp&quality=100&metadata'
+		as: 'w=1920&h=1200&webp&quality=100&fit=inside&meta=src;aspect'
 	})[imagePath];
 
-	console.log(image);
 	const src = image.src;
+	const ratio = image.aspect;
 
 	function onKeyUp(e) {
 		switch (e.key) {
@@ -46,7 +46,7 @@
 <svelte:window on:keyup={(e) => onKeyUp(e)} />
 
 <Scroller width="40rem">
-	<div class="lightbox">
+	<div class="lightbox {ratio <= 1.25 ? 'portrait' : 'landscape'}">
 		<div class="right">
 			<h2>{name}.</h2>
 			<p class="date">{date}</p>
@@ -59,47 +59,37 @@
 			</p>
 		</div>
 		<div class="left">
-			<img {src} alt={`${name}.`} loading="lazy" width="480" height="600" />
+			<img {src} alt={`${name}.`} loading="lazy" style:aspect-ratio={ratio} />
 		</div>
 	</div>
 </Scroller>
 
 <style>
 	.lightbox {
-		display: grid;
-		grid-auto-flow: column;
+		display: flex;
+		flex-wrap: wrap;
 		justify-content: center;
 		gap: 1rem;
 	}
 
 	.left {
 		order: 1;
-		grid-column-start: 1;
-		grid-row-start: 1;
+		max-width: 100%;
 	}
 
 	.right {
 		order: 2;
 		max-width: 15rem;
-		grid-column-start: 2;
-		grid-row-start: 1;
 	}
 
 	img {
 		display: block;
-		width: calc(100vw - 2rem);
-		height: auto;
-		max-width: 20rem;
-		object-fit: cover;
-		aspect-ratio: 4 / 5;
+		width: 100%;
 		border-radius: 1rem;
-		border-radius: 0.5rem;
+		box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 	}
 
-	@media (max-width: 800px) {
-		.lightbox {
-			display: flex;
-			flex-wrap: wrap;
-		}
+	.portrait img {
+		max-width: 24rem;
 	}
 </style>

@@ -30,7 +30,6 @@
 	}
 
 	.image-link {
-		z-index: 2;
 		width: 10rem;
 		margin: 0 auto;
 		border-radius: 50%;
@@ -38,15 +37,15 @@
 
 	img {
 		border-radius: 50%;
+		transition: var(--transition-dom-x-ray), var(--transition-profile-image);
 	}
 
 	.image-link:focus img {
-		transform: rotate(15deg);
+		rotate: 15deg;
 	}
-
 	@media (hover: hover) {
 		.image-link:hover img {
-			transform: rotate(15deg);
+			rotate: 15deg;
 		}
 	}
 </style>

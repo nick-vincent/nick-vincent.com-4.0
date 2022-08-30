@@ -23,7 +23,7 @@
 	<ul>
 		{#each faces as { id, name, slug, thumb, active } (id)}
 			<li>
-				<a sveltekit:prefetch href={`/etcetera/faces/${slug}`}>
+				<a class="image-link" sveltekit:prefetch href={`/etcetera/faces/${slug}`}>
 					{#if !active}
 						<img src={thumb} alt={`${name}.`} loading="lazy" width="280" height="280" />
 					{/if}
@@ -50,13 +50,6 @@
 	a {
 		display: block;
 		transition: var(--transition-dom-x-ray), scale 150ms ease;
-	}
-	a:hover,
-	a:focus {
-		scale: 1.1;
-	}
-	a::after {
-		display: none;
 	}
 
 	img {

@@ -14,7 +14,7 @@ button {
 a::after,
 button::after {
 	pointer-events: none;
-	content: '\2192';
+	content: '→';
 	display: inline;
 	position: absolute;
 	font-weight: 400;

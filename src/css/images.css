@@ -1,11 +1,8 @@
 .image-link {
+	z-index: 1;
 	position: relative;
 	display: block;
-	overflow: hidden;
 	border-radius: 0.5rem;
-	box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
-	transition: var(--transition-dom-x-ray), box-shadow var(--duration-image) var(--easing-image),
-		transform var(--duration-image) var(--easing-image);
 }
 .image-link::after {
 	display: none;
@@ -16,17 +13,26 @@
 	width: 100%;
 	height: auto;
 	border-radius: 0.5rem;
-	transition: var(--transition-dom-x-ray), transform var(--duration-image) var(--easing-image);
+	box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+	transition: var(--transition-dom-x-ray), var(--transition-image);
 }
 
 .image-link:focus {
-	box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.25);
-	transform: scale(1.05);
+	z-index: 2;
+}
+.image-link:focus img {
+	z-index: 2;
+	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.25);
+	scale: 1.1;
 }
 
 @media (hover: hover) {
 	.image-link:hover {
-		box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.25);
-		transform: scale(1.05);
+		z-index: 2;
+	}
+	.image-link:hover img {
+		z-index: 2;
+		box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.25);
+		scale: 1.1;
 	}
 }
