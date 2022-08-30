@@ -29,6 +29,18 @@ export const faces = [
 	// 	slug: 'helena',
 	// 	date: 'April 14, 2022'
 	// },
+	// {
+	// 	id: 'CcDdY7Lr_tq',
+	// 	name: 'Tessa',
+	// 	slug: 'tessa',
+	// 	date: 'April 7, 2022'
+	// },
+	// {
+	// 	id: 'Cb3M7Qov2S0',
+	// 	name: 'Andrew, Tom, & Tobey',
+	// 	slug: 'andrew-tom-tobey',
+	// 	date: 'April 2, 2022'
+	// },
 	{
 		id: 'CbVeYTOvzBU',
 		name: 'David',
@@ -102,6 +114,14 @@ export const faces = [
 			'He looks like he has a piercing whistle that equally amuses and annoys people, and that he uses a walking stick purely as a fashion statement.'
 	},
 	{
+		id: 'CS2s-WRpujf',
+		name: 'Mike',
+		slug: 'mike-r',
+		date: 'August 21, 2021',
+		caption:
+			'He looks like we has never worn a pair of khakis in his life, and that his heavy steps drive his downstairs neighbor crazy.'
+	},
+	{
 		id: 'CSz8GPDBByD',
 		name: 'Jon',
 		slug: 'jon',
@@ -116,6 +136,14 @@ export const faces = [
 		date: 'August 14, 2021',
 		caption:
 			'He looks like he finds opportunities to disagree with experts, and that he can hold in a fart for hours.'
+	},
+	{
+		id: 'CR2z-_qMVu2',
+		name: 'Alia',
+		slug: 'alia',
+		date: 'July 27, 2021',
+		caption:
+			'She looks like she has an oily scalp, and that she struggles with keeping her lipstick inside the lines.'
 	},
 	{
 		id: 'CR0aYWSMyNP',
@@ -283,6 +311,15 @@ export const faces = [
 		date: 'January 4, 2021',
 		caption: 'She looks like she has scoliosis, and owns a great dane named “Millicent”.'
 	},
+
+	{
+		id: 'CJWa1BQMd2S',
+		name: 'Jorma, Andy, & Akiva',
+		slug: 'jorma-andy-akiva',
+		date: 'December 28, 2020',
+		caption:
+			'They look like they spitball a lot of dumb startup ideas that they never execute on, and call dibs on girls at house parties.'
+	},
 	{
 		id: 'CHtuwGCnwZ2',
 		name: 'Katt',
@@ -320,6 +357,14 @@ export const faces = [
 			'He looks like he wears Speedos, and that he gets annoyed when his parents ask him for IT support.'
 	},
 	{
+		id: 'CFpwocCnh2V',
+		name: 'Tina',
+		slug: 'tina',
+		date: 'September 27, 2020',
+		caption:
+			'She looks like a tense kisser, and cuts the tags off her underpants due to skin irritation.'
+	},
+	{
 		id: 'CFnQOefn_2_',
 		name: 'Jordan',
 		slug: 'jordan',
@@ -333,6 +378,13 @@ export const faces = [
 		slug: 'chris-h',
 		date: 'September 25, 2020',
 		caption: 'He looks like he has a ham radio, and wears pleated khakis.'
+	},
+	{
+		id: 'CFccg10HvZR',
+		name: 'George',
+		slug: 'george-m',
+		date: 'September 22, 2020',
+		caption: 'He looks like he can whistle crisp and sharp, and lies to his dentist about flossing.'
 	},
 	{
 		id: 'CFX89LIHd7O',
@@ -357,6 +409,14 @@ export const faces = [
 		date: 'September 18, 2020',
 		caption:
 			'He looks like he never forgets to bring his own canvas grocery shopping bags, and he still has a subscription of Wired magazine.'
+	},
+	{
+		id: 'CFNXZTGsmYh',
+		name: 'Mike',
+		slug: 'mike-b',
+		date: 'September 16, 2020',
+		caption:
+			'He looks like he flashes his sports team color painted belly at tailgate parties, and drinks soda directly out of 2-liters.'
 	},
 	{
 		id: 'CE4cTb3sIKM',
@@ -452,6 +512,22 @@ export const faces = [
 		date: 'July 24, 2020',
 		caption:
 			'He looks like he used to steal video games when he worked at Best Buy, and have done things with goats at frat parties I can’t mention here.'
+	},
+	{
+		id: 'CC6boRfn8ra',
+		name: 'Trixie & Katya',
+		slug: 'trixie-katya',
+		date: 'July 21, 2020',
+		caption:
+			'They look like they have an ungodly collection of animal print thongs, and take selfies of themselves crying because they like the dramatic visual of streaked eye makeup.'
+	},
+	{
+		id: 'CCydDMQnMwN',
+		name: 'Dita',
+		slug: 'dita',
+		date: 'July 18, 2020',
+		caption:
+			'She looks like she has awoken spirits during home seances, and has exaggerated orgasms.'
 	},
 	{
 		id: 'CCqwtvTnf4Z',
