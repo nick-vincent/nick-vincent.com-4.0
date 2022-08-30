@@ -13,7 +13,7 @@
 		--gradientMask: linear-gradient(
 			to bottom,
 			transparent 3rem,
-			black 7rem,
+			black 6rem,
 			black calc(100% - 4rem),
 			transparent 100%
 		);
