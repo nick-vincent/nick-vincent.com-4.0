@@ -34,18 +34,27 @@
 		margin: 0 auto;
 		border-radius: 50%;
 	}
+	.image-link::after {
+		display: none;
+	}
 
 	img {
+		width: 100%;
+		height: auto;
 		border-radius: 50%;
+		background-color: var(--image-background);
+		box-shadow: var(--image-shadow);
 		transition: var(--transition-dom-x-ray), var(--transition-profile-image);
 	}
 
 	.image-link:focus img {
 		rotate: 15deg;
+		box-shadow: var(--image-shadow-focus);
 	}
 	@media (hover: hover) {
 		.image-link:hover img {
 			rotate: 15deg;
+			box-shadow: var(--image-shadow-focus);
 		}
 	}
 </style>

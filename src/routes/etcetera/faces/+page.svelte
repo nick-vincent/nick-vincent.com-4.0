@@ -1,5 +1,7 @@
 <script>
 	import Scroller from '$lib/Scroller.svelte';
+	import Thumbnail from '$lib/Thumbnail.svelte';
+	import IntersectionObserver from '$lib/IntersectionObserver.svelte';
 	import { faces as data } from '../../../img/faces/faces.js';
 
 	const thumbs = import.meta.globEager('../../../img/faces/*.png', {
@@ -23,9 +25,11 @@
 	<ul>
 		{#each faces as { name, slug, thumb }}
 			<li>
-				<a class="image-link" sveltekit:prefetch href={`/etcetera/faces/${slug}`}>
-					<img src={thumb} alt={`${name}.`} loading="lazy" width="280" height="280" />
-				</a>
+				<IntersectionObserver once={true} let:intersecting>
+					{#if intersecting}
+						<Thumbnail src={thumb} alt={`${name}.`} url={`/etcetera/faces/${slug}`} />
+					{/if}
+				</IntersectionObserver>
 			</li>
 		{/each}
 	</ul>
@@ -42,20 +46,8 @@
 
 	li {
 		margin: 0;
-		padding: 0;
-	}
-
-	a {
-		display: block;
-		transition: var(--transition-dom-x-ray), scale 150ms ease;
-	}
-
-	img {
-		display: block;
 		width: 100%;
 		height: auto;
-		object-fit: cover;
 		aspect-ratio: 1;
-		border-radius: 0.5rem;
 	}
 </style>

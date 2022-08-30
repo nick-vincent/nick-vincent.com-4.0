@@ -2,6 +2,7 @@
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import Scroller from '$lib/Scroller.svelte';
+	import IntersectionObserver from '$lib/IntersectionObserver.svelte';
 	import { faces } from '../../../../img/faces/faces.js';
 
 	const face = faces.find((f) => f.slug === $page.params.slug);
@@ -13,11 +14,16 @@
 
 	const imagePath = `../../../../img/faces/${slug}.png`;
 	const image = import.meta.globEager('../../../../img/faces/*.png', {
-		as: 'w=1920&h=1200&webp&quality=100&fit=inside&meta=src;aspect'
+		as: 'w=1920&h=1200&webp&quality=100&fit=inside&meta=src;aspect;width;height'
 	})[imagePath];
 
-	const src = image.src;
-	const ratio = image.aspect;
+	const { src, aspect, width, height } = image;
+
+	let loaded = false;
+
+	function onLoad() {
+		loaded = true;
+	}
 
 	function onKeyUp(e) {
 		switch (e.key) {
@@ -46,7 +52,7 @@
 <svelte:window on:keyup={(e) => onKeyUp(e)} />
 
 <Scroller width="40rem">
-	<div class="lightbox {ratio <= 1.25 ? 'portrait' : 'landscape'}">
+	<div class="lightbox {aspect <= 1.25 ? 'portrait' : 'landscape'}">
 		<div class="right">
 			<h1>{name}.</h1>
 			<p class="date">{date}</p>
@@ -58,8 +64,20 @@
 				<a sveltekit:prefetch href={`/etcetera/faces/`}>Back to faces</a>
 			</p>
 		</div>
-		<div class="left">
-			<img {src} alt={`${name}.`} loading="lazy" style:aspect-ratio={ratio} />
+		<div class="left" style:aspect-ratio={aspect}>
+			<IntersectionObserver once={true} let:intersecting>
+				{#if intersecting}
+					<img
+						{src}
+						{width}
+						{height}
+						alt={`${name}.`}
+						style:aspect-ratio={aspect}
+						class:loaded
+						on:load={onLoad}
+					/>
+				{/if}
+			</IntersectionObserver>
 		</div>
 	</div>
 </Scroller>
@@ -80,21 +98,30 @@
 	.left {
 		order: 1;
 		max-width: 100%;
+		border-radius: 1rem;
+		background-color: rgba(0, 0, 0, 0.1);
+		box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 	}
-
 	.right {
 		order: 2;
 		max-width: 15rem;
+	}
+	.landscape .left {
+		width: 40rem;
+	}
+	.portrait .left {
+		width: 24rem;
 	}
 
 	img {
 		display: block;
 		width: 100%;
+		height: auto;
 		border-radius: 1rem;
-		box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+		opacity: 0;
+		transition: var(--transition-dom-x-ray), opacity 1s ease;
 	}
-
-	.portrait img {
-		max-width: 24rem;
+	img.loaded {
+		opacity: 1;
 	}
 </style>
