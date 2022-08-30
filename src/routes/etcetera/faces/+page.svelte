@@ -21,12 +21,10 @@
 <Scroller width="40rem">
 	<h1>Faces</h1>
 	<ul>
-		{#each faces as { id, name, slug, thumb, active } (id)}
+		{#each faces as { name, slug, thumb }}
 			<li>
 				<a class="image-link" sveltekit:prefetch href={`/etcetera/faces/${slug}`}>
-					{#if !active}
-						<img src={thumb} alt={`${name}.`} loading="lazy" width="280" height="280" />
-					{/if}
+					<img src={thumb} alt={`${name}.`} loading="lazy" width="280" height="280" />
 				</a>
 			</li>
 		{/each}
