@@ -48,7 +48,7 @@
 <Scroller width="40rem">
 	<div class="lightbox {ratio <= 1.25 ? 'portrait' : 'landscape'}">
 		<div class="right">
-			<h2>{name}.</h2>
+			<h1>{name}.</h1>
 			<p class="date">{date}</p>
 			{#if caption}<p class="caption">“{caption}”</p>{/if}
 			<p>
@@ -65,6 +65,11 @@
 </Scroller>
 
 <style>
+	h1 {
+		font-size: 1.5rem;
+		letter-spacing: -0.025rem;
+	}
+
 	.lightbox {
 		display: flex;
 		flex-wrap: wrap;
