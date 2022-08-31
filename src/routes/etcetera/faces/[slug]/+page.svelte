@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 	import Scroller from '$lib/Scroller.svelte';
 	import Lightbox from '$lib/Lightbox.svelte';
-	import { faces } from '../../../../data/faces.js';
+	import { faces } from '../../../../img/faces/_manifest.js';
 
 	const face = faces.find((f) => f.slug === $page.params.slug);
 	const index = faces.indexOf(face);

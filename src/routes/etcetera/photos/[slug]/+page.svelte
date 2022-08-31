@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 	import Scroller from '$lib/Scroller.svelte';
 	import Lightbox from '$lib/Lightbox.svelte';
-	import { photos } from '../../../../data/photos.js';
+	import { photos } from '../../../../img/photos/_manifest.js';
 
 	const photo = photos.find((f) => f.slug === $page.params.slug);
 	const index = photos.indexOf(photo);

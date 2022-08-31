@@ -1,7 +1,7 @@
 <script>
 	import Scroller from '$lib/Scroller.svelte';
 	import Gallery from '$lib/Gallery.svelte';
-	import { faces as data } from '../../../data/faces.js';
+	import { faces as data } from '../../../img/faces/_manifest.js';
 
 	const thumbs = import.meta.globEager('../../../img/faces/*.png', {
 		as: 'w=280&h=280&webp&meta=src'
