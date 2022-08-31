@@ -1,7 +1,6 @@
 <script>
 	import Scroller from '$lib/Scroller.svelte';
 	import Thumbnail from '$lib/Thumbnail.svelte';
-	import IntersectionObserver from '$lib/IntersectionObserver.svelte';
 	import { faces as data } from '../../../img/faces/faces.js';
 
 	const thumbs = import.meta.globEager('../../../img/faces/*.png', {
@@ -25,14 +24,7 @@
 	<ul>
 		{#each faces as { name, slug, thumb }}
 			<li>
-				<IntersectionObserver once={true} let:intersecting>
-					<Thumbnail
-						src={thumb}
-						alt={`${name}.`}
-						visible={intersecting}
-						url={`/etcetera/faces/${slug}`}
-					/>
-				</IntersectionObserver>
+				<Thumbnail src={thumb} alt={`${name}.`} url={`/etcetera/faces/${slug}`} />
 			</li>
 		{/each}
 	</ul>

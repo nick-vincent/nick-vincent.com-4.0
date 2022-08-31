@@ -1,23 +1,36 @@
 <script>
+	import { createObserver } from 'svelte-use-io';
+
 	export let url;
 	export let src;
 	export let alt;
-	export let visible = false;
 
+	const { observer } = createObserver();
 	const rotation = (Math.random() - 0.5) * 45;
 
 	let img;
+	let visible = false;
 	let loaded = false;
+
 	function onLoad() {
 		loaded = true;
 	}
 
-	$: if (visible) {
+	function onVisible() {
+		visible = true;
 		img.src = src;
 	}
 </script>
 
-<a sveltekit:prefetch class:loaded class:visible href={url} style:--rotation={`${rotation}deg`}>
+<a
+	sveltekit:prefetch
+	href={url}
+	class:loaded
+	class:visible
+	style:--rotation={`${rotation}deg`}
+	use:observer={{ once: true }}
+	on:intersecting={onVisible}
+>
 	<img bind:this={img} {alt} width="280" height="280" on:load|once={onLoad} />
 </a>
 
