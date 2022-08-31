@@ -8,9 +8,9 @@
 
 <h1>{title}</h1>
 <ul>
-	{#each images as { name, slug, thumb }}
+	{#each images as { name, slug, src }}
 		<li>
-			<Thumbnail src={thumb} alt={`${name}.`} url={`${dir}${slug}`} />
+			<Thumbnail {src} alt={`${name}.`} url={`${dir}${slug}`} />
 		</li>
 	{/each}
 </ul>

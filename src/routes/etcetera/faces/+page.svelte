@@ -3,15 +3,14 @@
 	import Gallery from '$lib/Gallery.svelte';
 	import { faces as data } from '../../../img/faces/_manifest.js';
 
-	const thumbs = import.meta.globEager('../../../img/faces/*.png', {
+	const files = import.meta.globEager('../../../img/faces/*.png', {
 		as: 'w=280&h=280&webp&meta=src'
 	});
 
-	let faces = [...data];
+	const faces = [...data];
 
 	for (const face of faces) {
-		const thumb = thumbs[`../../../img/faces/${face.slug}.png`];
-		face.thumb = thumb.src;
+		face.src = files[`../../../img/faces/${face.slug}.png`].src;
 	}
 </script>
 
