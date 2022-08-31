@@ -53,7 +53,7 @@ export const faces = [
 		id: 'CYiNvwtLFi1',
 		name: 'Bob',
 		slug: 'bob-s',
-		date: 'January 1, 2022',
+		date: 'January 9, 2022',
 		caption:
 			'He looks like he has a bad habit of cracking his knuckles, and he politely chuckles every time someone asks him “how’s the weather up there?”'
 	},
