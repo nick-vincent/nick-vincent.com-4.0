@@ -34,8 +34,8 @@
 		title={`${name}.`}
 		caption={`“${caption}”`}
 		backUrl="/etcetera/faces/"
-		nextUrl={`/etcetera/faces/${prevFace.slug}`}
-		previousUrl={`/etcetera/faces/${nextFace.slug}`}
+		nextUrl={`/etcetera/faces/${nextFace.slug}`}
+		previousUrl={`/etcetera/faces/${prevFace.slug}`}
 		instagramUrl={`https://instagram.com/p/${id}`}
 	/>
 </Scroller>
