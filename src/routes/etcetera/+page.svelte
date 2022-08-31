@@ -28,9 +28,7 @@
 			<a sveltekit:prefetch href="/etcetera/faces/">make faces</a>
 		</li>
 		<li>
-			<a href="https://instagram.com/the.nick.vincent/" rel="external" target="_blank"
-				>snap photos</a
-			>
+			<a sveltekit:prefetch href="/etcetera/photos/">snap photos</a>
 		</li>
 		<li>
 			<a href="https://youtube.com/sixftdwarf" rel="external" target="_blank">strum tunes</a>
