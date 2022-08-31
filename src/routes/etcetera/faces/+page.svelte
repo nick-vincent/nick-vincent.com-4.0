@@ -26,9 +26,12 @@
 		{#each faces as { name, slug, thumb }}
 			<li>
 				<IntersectionObserver once={true} let:intersecting>
-					{#if intersecting}
-						<Thumbnail src={thumb} alt={`${name}.`} url={`/etcetera/faces/${slug}`} />
-					{/if}
+					<Thumbnail
+						src={thumb}
+						alt={`${name}.`}
+						visible={intersecting}
+						url={`/etcetera/faces/${slug}`}
+					/>
 				</IntersectionObserver>
 			</li>
 		{/each}
