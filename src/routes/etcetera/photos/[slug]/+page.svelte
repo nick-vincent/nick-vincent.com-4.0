@@ -2,12 +2,12 @@
 	import { page } from '$app/stores';
 	import Scroller from '$lib/Scroller.svelte';
 	import Lightbox from '$lib/Lightbox.svelte';
-	import { photos } from '../../../../img/photos/_manifest.js';
+	import { data } from '../../../../img/photos/_manifest.js';
 
-	const photo = photos.find((f) => f.slug === $page.params.slug);
-	const index = photos.indexOf(photo);
-	const prevFace = photos[index - 1] || photos[photos.length - 1];
-	const nextFace = photos[index + 1] || photos[0];
+	const photo = data.find((f) => f.slug === $page.params.slug);
+	const index = data.indexOf(photo);
+	const prevFace = data[index - 1] || data[data.length - 1];
+	const nextFace = data[index + 1] || data[0];
 
 	const { id, name, slug, date, caption } = photo;
 

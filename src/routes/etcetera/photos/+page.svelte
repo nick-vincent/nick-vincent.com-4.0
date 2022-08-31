@@ -1,7 +1,7 @@
 <script>
 	import Scroller from '$lib/Scroller.svelte';
 	import Gallery from '$lib/Gallery.svelte';
-	import { photos as data } from '../../../img/photos/_manifest.js';
+	import { data } from '../../../img/photos/_manifest.js';
 
 	const files = import.meta.globEager('../../../img/photos/*.jpg', {
 		as: 'w=280&h=280&webp&meta=src'
