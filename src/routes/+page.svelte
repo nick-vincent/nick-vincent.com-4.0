@@ -3,7 +3,11 @@
 </script>
 
 <svelte:head>
-	<title>Nick Vincent: Fluent in both design & code</title>
+	<title>Nick Vincent</title>
+	<meta
+		name="description"
+		content="Fluent in both design & code. Prefers work to speak for itself."
+	/>
 </svelte:head>
 
 <Scroller>

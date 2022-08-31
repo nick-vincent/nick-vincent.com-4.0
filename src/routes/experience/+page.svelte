@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>Nick Vincent: Experience</title>
+	<title>Nick Vincent → Experience</title>
 </svelte:head>
 
 <Scroller>
