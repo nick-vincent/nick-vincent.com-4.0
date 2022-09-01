@@ -12,6 +12,7 @@
 	for (const image of images) {
 		image.slug = `${image.date}-${slugify(image.title, { lower: true, strict: true })}`;
 		image.src = files[`../../../img/faces/${image.slug}.png`].src;
+		image.url = `/etcetera/faces/${image.slug}/`;
 	}
 </script>
 
@@ -20,5 +21,5 @@
 </svelte:head>
 
 <Scroller width="40rem">
-	<Gallery title="Faces" {images} dir={'/etcetera/faces/'} />
+	<Gallery title="Faces" {images} />
 </Scroller>

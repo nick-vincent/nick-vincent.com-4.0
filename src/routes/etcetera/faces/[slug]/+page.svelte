@@ -13,6 +13,7 @@
 	for (const image of images) {
 		image.slug = `${image.date}-${slugify(image.title, { lower: true, strict: true })}`;
 		image.src = files[`../../../../img/faces/${image.slug}.png`].src;
+		image.url = `/etcetera/faces/${image.slug}/`;
 	}
 
 	const face = images.find((f) => f.slug === $page.params.slug);

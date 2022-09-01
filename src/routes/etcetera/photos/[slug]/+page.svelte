@@ -13,6 +13,7 @@
 	for (const image of images) {
 		image.slug = `${image.date}-${slugify(image.title, { lower: true, strict: true })}`;
 		image.src = files[`../../../../img/photos/${image.slug}.jpg`].src;
+		image.url = `/etcetera/photos/${image.slug}/`;
 	}
 
 	const photo = images.find((f) => f.slug === $page.params.slug);
@@ -31,8 +32,8 @@
 </script>
 
 <svelte:head>
-	<title>Nick Vincent → Etcetera → Photos → {title}.</title>
-	<meta name="description" content={`“${caption}”`} />
+	<title>Nick Vincent → Etcetera → Photos → {title}</title>
+	<meta name="description" content={caption} />
 </svelte:head>
 
 <Scroller width="40rem">

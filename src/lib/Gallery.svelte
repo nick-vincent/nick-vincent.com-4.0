@@ -3,14 +3,13 @@
 
 	export let title;
 	export let images = [];
-	export let dir;
 </script>
 
 <h1>{title}</h1>
 <ul>
-	{#each images as { name, slug, src }}
+	{#each images as { name, url, src }}
 		<li>
-			<Thumbnail {src} alt={`${name}.`} url={`${dir}${slug}`} />
+			<Thumbnail {src} alt={`${name}.`} {url} />
 		</li>
 	{/each}
 </ul>
