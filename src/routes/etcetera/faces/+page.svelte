@@ -7,10 +7,10 @@
 		as: 'w=280&h=280&webp&meta=src'
 	});
 
-	const faces = [...data];
+	const images = [...data];
 
-	for (const face of faces) {
-		face.src = files[`../../../img/faces/${face.slug}.png`].src;
+	for (const image of images) {
+		image.src = files[`../../../img/faces/${image.slug}.png`].src;
 	}
 </script>
 
@@ -19,5 +19,5 @@
 </svelte:head>
 
 <Scroller width="40rem">
-	<Gallery title="Faces" images={faces} dir={'/etcetera/faces/'} />
+	<Gallery title="Faces" {images} dir={'/etcetera/faces/'} />
 </Scroller>
