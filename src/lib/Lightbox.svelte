@@ -1,6 +1,8 @@
 <script>
 	import { goto } from '$app/navigation';
+	import { spring } from 'svelte/motion';
 	import { createObserver } from 'svelte-use-io';
+	import { pannable } from './pannable';
 
 	export let src;
 	export let title;
@@ -19,6 +21,8 @@
 
 	let img;
 	let loaded = false;
+	let grabbing = false;
+	let scrolling = undefined;
 
 	function onLoad() {
 		loaded = true;
@@ -47,11 +51,64 @@
 				break;
 		}
 	}
+
+	const coords = spring(
+		{ x: 0 },
+		{
+			stiffness: 0.25,
+			damping: 1
+		}
+	);
+
+	function onPanStart(e) {
+		grabbing = true;
+		scrolling = undefined;
+	}
+	function onPanMove(e) {
+		const { dx, dy, originalEvent } = e.detail;
+
+		if (scrolling === undefined) {
+			scrolling = Math.abs(dy) > Math.abs(dx);
+		}
+
+		if (scrolling) {
+			return;
+		} else {
+			originalEvent.preventDefault();
+		}
+
+		coords.update(($coords) => ({
+			x: $coords.x + dx
+		}));
+	}
+	function onPanEnd(e) {
+		if (scrolling) {
+			scrolling = undefined;
+			return;
+		}
+
+		const { dx, time } = e.detail;
+		const swiped = time < 250 || Math.abs(dx) > img.clientWidth / 2;
+
+		grabbing = false;
+		scrolling = undefined;
+
+		if (swiped && dx < -10 && previousUrl) {
+			goto(previousUrl);
+		} else if (swiped && dx > 10 && nextUrl) {
+			goto(nextUrl);
+		} else {
+			coords.set({ x: 0 });
+		}
+	}
 </script>
 
 <svelte:window on:keyup={(e) => onKeyUp(e)} />
 
-<div class="lightbox {aspect <= 1.25 ? 'portrait' : 'landscape'}">
+<div
+	class="lightbox {aspect <= 1.25 ? 'portrait' : 'landscape'}"
+	style="transform: translateX({$coords.x}px);"
+>
 	<div class="right">
 		{#if title}<h1>{title}</h1>{/if}
 		{#if date}<p class="date">{date}</p>{/if}
@@ -72,10 +129,16 @@
 			{height}
 			alt={title}
 			class:loaded
+			class:grabbing
 			style:aspect-ratio={aspect}
+			on:load|once={onLoad}
 			use:observer={{ once: true }}
 			on:intersecting={onVisible}
-			on:load|once={onLoad}
+			use:pannable
+			on:panstart={onPanStart}
+			on:panmove={onPanMove}
+			on:panend={onPanEnd}
+			on:dragstart|preventDefault
 		/>
 	</div>
 </div>
@@ -91,6 +154,7 @@
 		flex-wrap: wrap;
 		justify-content: center;
 		gap: 1rem;
+		transition: var(--transition-dom-x-ray), transform 0s;
 	}
 
 	.left {
@@ -116,6 +180,7 @@
 	}
 
 	img {
+		cursor: grab;
 		display: block;
 		width: 100%;
 		height: auto;
@@ -125,5 +190,8 @@
 	}
 	img.loaded {
 		opacity: 1;
+	}
+	img.grabbing {
+		cursor: grabbing;
 	}
 </style>
