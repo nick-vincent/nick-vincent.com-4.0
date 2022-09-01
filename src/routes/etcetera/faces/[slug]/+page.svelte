@@ -9,7 +9,7 @@
 	const prevFace = data[index - 1] || data[data.length - 1];
 	const nextFace = data[index + 1] || data[0];
 
-	const { id, name, slug, date, caption } = face;
+	const { id, title, slug, date, caption } = face;
 
 	const imagePath = `../../../../img/faces/${slug}.png`;
 	const image = import.meta.globEager('../../../../img/faces/*.png', {
@@ -20,7 +20,7 @@
 </script>
 
 <svelte:head>
-	<title>Nick Vincent → Etcetera → Faces → {name}.</title>
+	<title>Nick Vincent → Etcetera → Faces → {title}.</title>
 	<meta name="description" content={`“${caption}”`} />
 </svelte:head>
 
@@ -31,7 +31,7 @@
 		{width}
 		{height}
 		{aspect}
-		title={`${name}.`}
+		title={`${title}.`}
 		caption={`“${caption}”`}
 		backUrl="/etcetera/faces/"
 		nextUrl={`/etcetera/faces/${nextFace.slug}`}

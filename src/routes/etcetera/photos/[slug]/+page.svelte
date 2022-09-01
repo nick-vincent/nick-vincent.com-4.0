@@ -9,7 +9,7 @@
 	const prevFace = data[index - 1] || data[data.length - 1];
 	const nextFace = data[index + 1] || data[0];
 
-	const { id, name, slug, date, caption } = photo;
+	const { id, title, slug, date, caption } = photo;
 
 	const imagePath = `../../../../img/photos/${slug}.jpg`;
 	const image = import.meta.globEager('../../../../img/photos/*.jpg', {
@@ -20,7 +20,7 @@
 </script>
 
 <svelte:head>
-	<title>Nick Vincent → Etcetera → Photos → {name}.</title>
+	<title>Nick Vincent → Etcetera → Photos → {title}.</title>
 	<meta name="description" content={`“${caption}”`} />
 </svelte:head>
 
@@ -28,11 +28,11 @@
 	<Lightbox
 		{src}
 		{date}
+		{title}
 		{width}
 		{height}
 		{aspect}
 		{caption}
-		title={name}
 		backUrl="/etcetera/photos/"
 		nextUrl={`/etcetera/photos/${nextFace.slug}`}
 		previousUrl={`/etcetera/photos/${prevFace.slug}`}
