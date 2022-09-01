@@ -1,13 +1,24 @@
 <script>
 	import { page } from '$app/stores';
+	import slugify from 'slugify';
 	import Scroller from '$lib/Scroller.svelte';
 	import Lightbox from '$lib/Lightbox.svelte';
 	import { data } from '../../../../img/faces/_manifest.js';
 
-	const face = data.find((f) => f.slug === $page.params.slug);
-	const index = data.indexOf(face);
-	const prevFace = data[index - 1] || data[data.length - 1];
-	const nextFace = data[index + 1] || data[0];
+	const files = import.meta.globEager('../../../../img/faces/*.png', {
+		as: 'w=1920&h=1200&webp&quality=100&fit=inside&meta=src;aspect;width;height'
+	});
+
+	const images = [...data];
+	for (const image of images) {
+		image.slug = `${image.date}-${slugify(image.title, { lower: true, strict: true })}`;
+		image.src = files[`../../../../img/faces/${image.slug}.png`].src;
+	}
+
+	const face = images.find((f) => f.slug === $page.params.slug);
+	const index = images.indexOf(face);
+	const prevFace = images[index - 1] || images[images.length - 1];
+	const nextFace = images[index + 1] || images[0];
 
 	const { id, title, slug, date, caption } = face;
 

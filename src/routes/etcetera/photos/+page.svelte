@@ -1,4 +1,5 @@
 <script>
+	import slugify from 'slugify';
 	import Scroller from '$lib/Scroller.svelte';
 	import Gallery from '$lib/Gallery.svelte';
 	import { data } from '../../../img/photos/_manifest.js';
@@ -8,8 +9,8 @@
 	});
 
 	const images = [...data];
-
 	for (const image of images) {
+		image.slug = `${image.date}-${slugify(image.title, { lower: true, strict: true })}`;
 		image.src = files[`../../../img/photos/${image.slug}.jpg`].src;
 	}
 </script>
