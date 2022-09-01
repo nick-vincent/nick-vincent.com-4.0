@@ -58,7 +58,7 @@
 		{#if caption}<p class="caption">{caption}</p>{/if}
 		<ul>
 			<li>
-				<a sveltekit:prefetch href={backUrl}>More faces</a>
+				<a sveltekit:prefetch href={backUrl}>Back to the gallery</a>
 			</li>
 			<li>
 				<a href={instagramUrl} rel="external" target="_blank">On Instagram</a>
