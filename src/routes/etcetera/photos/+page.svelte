@@ -8,11 +8,13 @@
 		as: 'w=280&h=280&webp&meta=src'
 	});
 
-	const images = [...data];
-	for (const image of images) {
-		image.slug = `${image.date}-${slugify(image.title, { lower: true, strict: true })}`;
-		image.src = files[`../../../img/photos/${image.slug}.jpg`].src;
-		image.url = `/etcetera/photos/${image.slug}/`;
+	const images = [];
+	for (let i = 0; i < data.length; i++) {
+		const image = { ...data[i] };
+		const slug = `${image.date}-${slugify(image.title, { lower: true, strict: true })}`;
+		image.src = files[`../../../img/photos/${slug}.jpg`].src;
+		image.url = `/etcetera/photos/${slug}/`;
+		images[i] = image;
 	}
 </script>
 

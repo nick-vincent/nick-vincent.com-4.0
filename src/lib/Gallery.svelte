@@ -7,9 +7,9 @@
 
 <h1>{title}</h1>
 <ul>
-	{#each images as { name, url, src }}
+	{#each images as { title, url, src }}
 		<li>
-			<Thumbnail {src} alt={`${name}.`} {url} />
+			<Thumbnail {src} alt={title} {url} />
 		</li>
 	{/each}
 </ul>
