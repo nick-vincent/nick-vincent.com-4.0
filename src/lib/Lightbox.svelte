@@ -154,6 +154,7 @@
 		flex-wrap: wrap;
 		justify-content: center;
 		gap: 1rem;
+		will-change: transform;
 		transition: var(--transition-dom-x-ray), transform 0s;
 	}
 
@@ -162,7 +163,7 @@
 		max-width: 100%;
 		border-radius: 1rem;
 		background-color: rgba(0, 0, 0, 0.1);
-		box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+		box-shadow: var(--image-shadow);
 	}
 	.right {
 		order: 2;
@@ -187,6 +188,7 @@
 		height: auto;
 		border-radius: 1rem;
 		opacity: 0;
+		will-change: opacity;
 		transition: var(--transition-dom-x-ray), opacity 1s ease;
 	}
 	img.loaded {

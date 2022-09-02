@@ -21,6 +21,7 @@
 		position: fixed;
 		inset: 0;
 		padding: 6rem 1rem;
+		will-change: scroll-position;
 		mask-image: var(--gradientMask);
 		-webkit-mask-image: var(--gradientMask);
 	}

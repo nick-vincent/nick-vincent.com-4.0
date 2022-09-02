@@ -44,6 +44,7 @@
 		aspect-ratio: 1;
 		border-radius: 0.5rem;
 		background-color: var(--image-background);
+		will-change: opacity, transform;
 		opacity: 0;
 		transform: scale(0) rotate(var(--rotation));
 		transition: var(--transition-dom-x-ray), opacity 500ms ease, transform 500ms ease;
@@ -61,6 +62,7 @@
 		box-shadow: var(--image-shadow);
 	}
 	a::after {
+		will-change: opacity;
 		opacity: 0;
 		box-shadow: var(--image-shadow-focus);
 		transition: var(--transition-dom-x-ray), opacity 150ms ease;
@@ -97,6 +99,7 @@
 		width: 100%;
 		height: auto;
 		border-radius: 0.5rem;
+		will-change: opacity;
 		opacity: 0;
 		transition: var(--transition-dom-x-ray), opacity 1s linear;
 	}

@@ -63,6 +63,7 @@
 		line-height: 1;
 		letter-spacing: -0.05rem;
 		text-align: center;
+		will-change: opacity;
 		opacity: 0;
 		visibility: hidden;
 		transition: var(--transition-dom-x-ray), visibility 0ms linear var(--delay-out),
@@ -88,6 +89,7 @@
 		display: block;
 		opacity: 0;
 		visibility: hidden;
+		will-change: opacity, transform, filter;
 		filter: blur(0.25rem);
 		transform: translateX(-1rem);
 		transition: var(--transition-dom-x-ray),
@@ -114,6 +116,7 @@
 		background: none;
 		padding: 0.5rem 1rem;
 		color: var(--color-h1);
+		will-change: opacity;
 		transition: var(--transition-dom-x-ray), opacity 0.5s ease-in-out;
 	}
 

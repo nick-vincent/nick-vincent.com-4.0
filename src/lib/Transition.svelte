@@ -46,5 +46,6 @@
 <style>
 	.transition {
 		height: 100%;
+		will-change: opacity, transform, filter;
 	}
 </style>
