@@ -41,10 +41,6 @@
 		transition: var(--transition-dom-x-ray), opacity 200ms var(--easing-standard);
 	}
 
-	button::after {
-		display: none;
-	}
-
 	button:active {
 		background: none;
 	}

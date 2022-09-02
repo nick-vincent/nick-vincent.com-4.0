@@ -1,6 +1,6 @@
 a,
 button {
-	display: inline-block;
+	display: inline;
 	cursor: pointer;
 	padding: 0;
 	margin: 0;
@@ -11,8 +11,7 @@ button {
 	border: none;
 }
 
-a::after,
-button::after {
+.arrow-link::after {
 	pointer-events: none;
 	content: '→';
 	display: inline;
@@ -25,8 +24,7 @@ button::after {
 		transform var(--duration-arrow-out) var(--easing-arrow-out);
 }
 
-a:focus-visible::after,
-button:focus-visible::after {
+.arrow-link:focus-visible::after {
 	opacity: 1;
 	transform: translateX(0.15em);
 	transition: var(--transition-dom-x-ray), opacity var(--duration-arrow-in) var(--easing-decelerate),
@@ -34,8 +32,7 @@ button:focus-visible::after {
 }
 
 @media (hover: hover) {
-	a:hover::after,
-	button:hover::after {
+	.arrow-link:hover::after {
 		opacity: 1;
 		transform: translateX(0.15em);
 		transition: var(--transition-dom-x-ray),
@@ -45,8 +42,7 @@ button:focus-visible::after {
 }
 
 @media print {
-	a::after,
-	button::after {
+	.arrow-link::after {
 		display: none !important;
 	}
 }

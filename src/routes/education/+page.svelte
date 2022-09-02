@@ -10,7 +10,7 @@
 	<h1>Education</h1>
 
 	<h2>
-		<a class="university" href="https://www.unlv.edu" rel="external" target="_blank"
+		<a class="arrow-link" href="https://www.unlv.edu" rel="external" target="_blank"
 			>University of Nevada, Las&nbsp;Vegas</a
 		>
 	</h2>
@@ -18,7 +18,7 @@
 	<p class="date">Dec 2005</p>
 
 	<h2>
-		<a class="university" href="https://www.csn.edu" rel="external" target="_blank"
+		<a class="arrow-link" href="https://www.csn.edu" rel="external" target="_blank"
 			>College of Southern&nbsp;Nevada</a
 		>
 	</h2>

@@ -117,10 +117,6 @@
 		transition: var(--transition-dom-x-ray), opacity 0.5s ease-in-out;
 	}
 
-	a::after {
-		display: none;
-	}
-
 	nav:not(.open) a,
 	ul:focus-within a:not(:focus) {
 		opacity: 0.4;
