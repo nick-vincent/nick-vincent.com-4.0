@@ -15,7 +15,7 @@
 <DarkMode bind:theme />
 
 <button on:click={() => (theme = switchTheme)}>
-	<span class="text">
+	<span class="visually-hidden">
 		Switch to {switchTheme} mode
 	</span>
 	<span class="circle {theme}">
@@ -53,16 +53,6 @@
 		button:hover {
 			opacity: 1;
 		}
-	}
-
-	.text {
-		clip: rect(0 0 0 0);
-		clip-path: inset(50%);
-		height: 1px;
-		overflow: hidden;
-		position: absolute;
-		white-space: nowrap;
-		width: 1px;
 	}
 
 	.circle {

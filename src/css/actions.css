@@ -1,12 +1,14 @@
 a,
 button {
-	display: inline;
 	cursor: pointer;
+	display: inline-block;
+	position: relative;
 	padding: 0;
 	margin: 0;
 	background: none;
 	font: inherit;
 	font-weight: 600;
+	line-height: inherit;
 	text-decoration: none;
 	border: none;
 }
@@ -14,8 +16,8 @@ button {
 .arrow-link::after {
 	pointer-events: none;
 	content: '→';
-	display: inline;
-	position: absolute;
+	display: inline-block;
+	line-height: inherit;
 	font-weight: 400;
 	opacity: 0;
 	transform: translateX(-0.15em);

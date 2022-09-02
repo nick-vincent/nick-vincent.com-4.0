@@ -2,7 +2,8 @@
 	import { goto } from '$app/navigation';
 	import { spring } from 'svelte/motion';
 	import { createObserver } from 'svelte-use-io';
-	import { pannable } from './pannable';
+	import { pannable } from '$lib/pannable';
+	import InstagramLink from '$lib/InstagramLink.svelte';
 
 	export let src;
 	export let title;
@@ -113,14 +114,20 @@
 		{#if title}<h1>{title}</h1>{/if}
 		{#if date}<p class="date">{date}</p>{/if}
 		{#if caption}<p class="caption">{caption}</p>{/if}
-		<ul>
-			<li>
-				<a sveltekit:prefetch href={backUrl}>Back to the gallery</a>
-			</li>
-			<li>
-				<a href={instagramUrl} rel="external" target="_blank">On Instagram</a>
-			</li>
-		</ul>
+		{#if instagramUrl || backUrl}
+			<ul class="inline">
+				{#if instagramUrl}<li><InstagramLink url={instagramUrl} /></li>{/if}
+				{#if previousUrl}<li>
+						<a sveltekit:prefetch href={previousUrl}>Prev</a>
+					</li>{/if}
+				{#if nextUrl}<li>
+						<a sveltekit:prefetch href={nextUrl}>Next</a>
+					</li>{/if}
+				{#if backUrl}<li>
+						<a sveltekit:prefetch class="arrow-link" href={backUrl}>See all</a>
+					</li>{/if}
+			</ul>
+		{/if}
 	</div>
 	<div class="left" style:aspect-ratio={aspect}>
 		<img
@@ -179,6 +186,8 @@
 
 	ul {
 		font-size: 0.75rem;
+		line-height: 1rem;
+		margin: 1.5rem 0 0;
 	}
 
 	img {

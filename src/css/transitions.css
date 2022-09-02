@@ -20,7 +20,8 @@
 	--transition-dom-x-ray: color 1s var(--easing-standard), border-color 1s var(--easing-standard),
 		background-color 1s var(--easing-standard), outline-color 1s var(--easing-standard),
 		opacity 1s var(--easing-standard), visibility 1s var(--easing-standard),
-		filter 1s var(--easing-standard), transform 1s var(--easing-standard);
+		filter 1s var(--easing-standard), transform 1s var(--easing-standard),
+		fill 1s var(--easing-standard);
 }
 
 *,

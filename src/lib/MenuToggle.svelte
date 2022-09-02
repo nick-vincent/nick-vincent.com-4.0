@@ -3,7 +3,7 @@
 </script>
 
 <button class:open on:click={() => (open = !open)}>
-	<span class="text">
+	<span class="visually-hidden">
 		{#if open}
 			Close menu
 		{:else}
@@ -45,16 +45,6 @@
 		button:hover {
 			opacity: 1;
 		}
-	}
-
-	.text {
-		clip: rect(0 0 0 0);
-		clip-path: inset(50%);
-		height: 1px;
-		overflow: hidden;
-		position: absolute;
-		white-space: nowrap;
-		width: 1px;
 	}
 
 	.top,

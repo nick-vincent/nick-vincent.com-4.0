@@ -76,8 +76,27 @@ ul.bullet li::before {
 	left: -1rem;
 }
 
+ul.inline li {
+	display: inline-block;
+}
+ul.inline li:not(:first-child) {
+	border-left: 1px solid var(--color-line);
+	margin-left: 0.5rem;
+	padding-left: 0.5rem;
+}
+
 .date {
 	margin-top: 0;
 	font-size: 0.75rem;
 	font-style: italic;
+}
+
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
 }
