@@ -166,6 +166,7 @@
 	}
 	.right {
 		order: 2;
+		width: 100%;
 		max-width: 15rem;
 	}
 	.landscape .left {
