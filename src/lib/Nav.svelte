@@ -29,7 +29,15 @@
       --delay-out: ${itemDelayOut(i)}ms;
     `;
 	};
+
+	function onKeyUp(e) {
+		if (e.key === 'Escape') {
+			open = false;
+		}
+	}
 </script>
+
+<svelte:window on:keyup={(e) => onKeyUp(e)} />
 
 <MenuToggle bind:open />
 
