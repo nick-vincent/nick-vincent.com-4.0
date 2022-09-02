@@ -11,7 +11,7 @@
 				const eased = easing(t);
 				return `
 					opacity: ${eased};
-					scale: ${0.9 + 0.1 * eased};
+					transform: scale(${0.9 + 0.1 * eased});
 					filter: blur(${1 - eased}rem);
 				`;
 			}
@@ -25,7 +25,7 @@
 				const eased = easing(t);
 				return `
 					opacity: ${eased};					
-					scale: ${0.9 + 0.1 * eased};
+					transform: scale(${0.9 + 0.1 * eased});
 					filter: blur(${1 - eased}rem);
 				`;
 			}
