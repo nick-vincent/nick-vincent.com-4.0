@@ -25,7 +25,7 @@
 		vertical-align: middle;
 	}
 	path {
-		fill: var(--color-text);
+		fill: var(--color-link);
 	}
 	span {
 		display: inline-block;
