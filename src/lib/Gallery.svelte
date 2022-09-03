@@ -1,11 +1,9 @@
 <script>
 	import Thumbnail from '$lib/Thumbnail.svelte';
 
-	export let title;
 	export let images = [];
 </script>
 
-<h1>{title}</h1>
 <ul>
 	{#each images as { title, url, src }}
 		<li>
@@ -15,10 +13,6 @@
 </ul>
 
 <style>
-	h1 {
-		margin-bottom: 1rem;
-	}
-
 	ul {
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));

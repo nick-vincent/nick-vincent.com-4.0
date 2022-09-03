@@ -21,8 +21,17 @@
 
 <svelte:head>
 	<title>Nick Vincent → Etcetera → Faces</title>
+	<meta name="description" content="Portraits of various famous folks." />
 </svelte:head>
 
 <Scroller width="40rem">
-	<Gallery title="Faces" {images} />
+	<h1>Faces</h1>
+	<p>Portraits of various famous folks.</p>
+	<Gallery {images} />
 </Scroller>
+
+<style>
+	p {
+		margin-bottom: 2rem;
+	}
+</style>

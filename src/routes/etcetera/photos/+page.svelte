@@ -20,8 +20,17 @@
 
 <svelte:head>
 	<title>Nick Vincent → Etcetera → Photos</title>
+	<meta name="description" content="Pictures at various locales around the world." />
 </svelte:head>
 
 <Scroller width="40rem">
-	<Gallery title="Photos" {images} />
+	<h1>Photos</h1>
+	<p>Pictures at various locales around the world.</p>
+	<Gallery {images} />
 </Scroller>
+
+<style>
+	p {
+		margin-bottom: 2rem;
+	}
+</style>
