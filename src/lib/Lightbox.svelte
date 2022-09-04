@@ -107,7 +107,7 @@
 <svelte:window on:keyup={(e) => onKeyUp(e)} />
 
 <div
-	class="lightbox {aspect <= 1.6 ? 'portrait' : 'landscape'}"
+	class="lightbox {aspect < 1.6 ? 'portrait' : 'landscape'}"
 	style="transform: translateX({$coords.x}px);"
 >
 	<div class="right">
