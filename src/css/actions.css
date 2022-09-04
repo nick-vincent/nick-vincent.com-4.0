@@ -17,6 +17,7 @@ button {
 	pointer-events: none;
 	content: '→';
 	display: inline-block;
+	position: absolute;
 	line-height: inherit;
 	font-weight: 400;
 	opacity: 0;
