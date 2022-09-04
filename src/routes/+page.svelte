@@ -1,5 +1,6 @@
 <script>
 	import Scroller from '$lib/Scroller.svelte';
+	import Image from '../img/nick-vincent.jpg?w=480&h=480&webp&meta=src';
 </script>
 
 <svelte:head>
@@ -11,7 +12,7 @@
 </svelte:head>
 
 <Scroller>
-	<img alt="Portrait of Nick Vincent" src="/nick-vincent.jpg" width="960" height="960" />
+	<img alt="Portrait of Nick Vincent" src={Image.src} width="480" height="480" />
 	<h1>Nick Vincent</h1>
 	<p>Fluent in both design & code</p>
 	<p>Prefers work to speak for itself</p>
