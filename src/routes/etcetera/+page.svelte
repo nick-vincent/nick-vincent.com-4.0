@@ -8,6 +8,25 @@
 
 <Scroller>
 	<h1>Etcetera</h1>
+
+	<p>I’m also known to:</p>
+	<ul class="bullet">
+		<li>
+			<a sveltekit:prefetch class="arrow-link" href="/etcetera/faces/">make faces</a>
+		</li>
+		<li>
+			<a sveltekit:prefetch class="arrow-link" href="/etcetera/photos/">snap photos</a>
+		</li>
+		<li>
+			<a sveltekit:prefetch class="arrow-link" href="/etcetera/strum/">strum tunes</a>
+		</li>
+		<li>
+			<a sveltekit:prefetch class="arrow-link" href="/etcetera/rock/">rock out</a>
+		</li>
+	</ul>
+
+	<hr />
+
 	<p>
 		I made
 		<a
@@ -24,23 +43,7 @@
 		>
 	</p>
 
-	<p>I’m also known to:</p>
-	<ul class="bullet">
-		<li>
-			<a sveltekit:prefetch class="arrow-link" href="/etcetera/faces/">make faces</a>
-		</li>
-		<li>
-			<a sveltekit:prefetch class="arrow-link" href="/etcetera/photos/">snap photos</a>
-		</li>
-		<li>
-			<a href="https://youtube.com/sixftdwarf" class="arrow-link" rel="external" target="_blank"
-				>strum tunes</a
-			>
-		</li>
-		<li>
-			<a href="https://annumford.com" class="arrow-link" rel="external" target="_blank">pen odes</a>
-		</li>
-	</ul>
+	<hr />
 
 	<p>This website features:</p>
 	<ul class="bullet">
