@@ -1,4 +1,5 @@
 <script>
+	import { onMount } from 'svelte';
 	import { createObserver } from 'svelte-use-io';
 
 	export let url;
@@ -11,6 +12,11 @@
 	let img;
 	let visible = false;
 	let loaded = false;
+
+	onMount(() => {
+		img.removeAttribute('src');
+		img.removeAttribute('loading');
+	});
 
 	function onLoad() {
 		loaded = true;
@@ -31,7 +37,7 @@
 	use:observer={{ once: true }}
 	on:intersecting={onVisible}
 >
-	<img bind:this={img} {alt} width="280" height="280" on:load|once={onLoad} />
+	<img bind:this={img} {src} {alt} width="280" height="280" loading="lazy" on:load|once={onLoad} />
 </a>
 
 <style>
@@ -68,7 +74,8 @@
 		transition: var(--transition-dom-x-ray), opacity 150ms ease;
 	}
 
-	a.visible {
+	a.visible,
+	:global(html.no-js) a {
 		opacity: 1;
 		transform: scale(1) rotate(0deg);
 	}
@@ -103,7 +110,8 @@
 		opacity: 0;
 		transition: var(--transition-dom-x-ray), opacity 1s linear;
 	}
-	a.loaded img {
+	a.loaded img,
+	:global(html.no-js) img {
 		opacity: 1;
 	}
 </style>

@@ -1,6 +1,7 @@
 <script>
 	import { goto } from '$app/navigation';
 	import { spring } from 'svelte/motion';
+	import { onMount } from 'svelte';
 	import { createObserver } from 'svelte-use-io';
 	import { pannable } from '$lib/pannable';
 	import InstagramLink from '$lib/InstagramLink.svelte';
@@ -24,6 +25,10 @@
 	let loaded = false;
 	let grabbing = false;
 	let scrolling = undefined;
+
+	onMount(() => {
+		img.removeAttribute('src');
+	});
 
 	function onLoad() {
 		loaded = true;
@@ -132,6 +137,7 @@
 	<div class="left" style:aspect-ratio={aspect}>
 		<img
 			bind:this={img}
+			{src}
 			{width}
 			{height}
 			alt={title}
@@ -200,7 +206,8 @@
 		will-change: opacity;
 		transition: var(--transition-dom-x-ray), opacity 1s ease;
 	}
-	img.loaded {
+	img.loaded,
+	:global(html.no-js) img {
 		opacity: 1;
 	}
 	img.grabbing {
