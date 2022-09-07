@@ -1,20 +1,41 @@
 <script>
-	import { afterUpdate } from 'svelte';
-	import DarkMode from 'svelte-dark-mode';
+	import { onMount } from 'svelte';
 
-	let theme = 'light';
+	let theme;
 
 	$: switchTheme = theme === 'dark' ? 'light' : 'dark';
+	$: theme && applyTheme();
 
-	afterUpdate(() => {
+	onMount(() => {
+		const mql = matchMedia('(prefers-color-scheme: dark)');
+		mql.addEventListener('change', onChange);
+		setTheme(mql.matches);
+		return () => mql.removeEventListener('change', onChange);
+	});
+
+	function setTheme(matches) {
+		const prefers = matches ? 'dark' : 'light';
+		const stored = localStorage.getItem('theme');
+		theme = stored || prefers || 'light';
+	}
+
+	function applyTheme() {
+		if (typeof window === 'undefined') return;
 		document.documentElement.classList.add(theme);
 		document.documentElement.classList.remove(switchTheme);
-	});
+	}
+
+	function onClick() {
+		theme = switchTheme;
+		localStorage.setItem('theme', theme);
+	}
+
+	function onChange(e) {
+		setTheme(e.matches);
+	}
 </script>
 
-<DarkMode bind:theme />
-
-<button on:click={() => (theme = switchTheme)}>
+<button on:click={onClick}>
 	<span class="visually-hidden">
 		Switch to {switchTheme} mode
 	</span>
@@ -67,11 +88,11 @@
 		border-radius: 50%;
 	}
 
-	.circle.light {
+	:global(html.light) .circle {
 		transform: rotate(-90deg);
 	}
 
-	.circle.dark {
+	:global(html.dark) .circle {
 		transform: rotate(90deg);
 	}
 
@@ -92,6 +113,10 @@
 	.bottom {
 		bottom: 0;
 		background-color: var(--color-ui-invert);
+	}
+
+	:global(html.no-js) button {
+		display: none;
 	}
 
 	@media print {

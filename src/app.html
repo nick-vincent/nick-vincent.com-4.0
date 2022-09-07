@@ -6,6 +6,10 @@
 		<meta name="viewport" content="width=device-width" />
 		<script>
 			document.documentElement.classList.remove('no-js');
+			const prefers = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+			const stored = localStorage.getItem('theme');
+			const theme = stored || prefers;
+			document.documentElement.classList.add(theme);
 		</script>
 		%sveltekit.head%
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-CZCRK0J0P6"></script>
