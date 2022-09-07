@@ -5,9 +5,9 @@
 </script>
 
 <ul>
-	{#each images as { title, url, src }}
+	{#each images as { title, url, thumb }}
 		<li>
-			<Thumbnail {src} alt={title} {url} />
+			<Thumbnail src={thumb} alt={title} {url} />
 		</li>
 	{/each}
 </ul>

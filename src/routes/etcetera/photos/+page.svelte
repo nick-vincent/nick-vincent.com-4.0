@@ -1,21 +1,9 @@
 <script>
-	import slugify from 'slugify';
 	import Scroller from '$lib/Scroller.svelte';
 	import Gallery from '$lib/Gallery.svelte';
-	import { data } from '../../../img/photos/_manifest.js';
+	import { getImageData } from '../data';
 
-	const files = import.meta.globEager('../../../img/photos/*.jpg', {
-		as: 'w=280&h=280&webp&meta=src'
-	});
-
-	const images = [];
-	for (let i = 0; i < data.length; i++) {
-		const image = { ...data[i] };
-		const slug = `${image.date}-${slugify(image.title, { lower: true, strict: true })}`;
-		image.src = files[`../../../img/photos/${slug}.jpg`].src;
-		image.url = `/etcetera/photos/${slug}/`;
-		images[i] = image;
-	}
+	const images = getImageData('photos');
 </script>
 
 <svelte:head>
