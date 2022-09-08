@@ -5,6 +5,7 @@
 
 	$: switchTheme = theme === 'dark' ? 'light' : 'dark';
 	$: theme && applyTheme();
+	$: cta = `Switch to ${switchTheme} mode`;
 
 	onMount(() => {
 		const mql = matchMedia('(prefers-color-scheme: dark)');
@@ -37,9 +38,9 @@
 
 <button on:click={onClick}>
 	<span class="visually-hidden">
-		Switch to {switchTheme} mode
+		{cta}
 	</span>
-	<span class="circle {theme}">
+	<span class="circle {theme}" aria-hidden="true">
 		<span class="top" />
 		<span class="bottom" />
 	</span>
@@ -49,6 +50,7 @@
 	button {
 		z-index: 4;
 		cursor: pointer;
+		pointer-events: auto;
 		appearance: none;
 		position: fixed;
 		right: 0;

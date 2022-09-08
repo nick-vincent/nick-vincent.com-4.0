@@ -2,7 +2,14 @@
 	export let open = false;
 </script>
 
-<button class:open on:click={() => (open = !open)}>
+<a
+	href="#navigation"
+	role="button"
+	aria-haspopup="true"
+	aria-controls="navigation"
+	aria-expanded={open ? 'true' : 'false'}
+	on:click|preventDefault={() => (open = !open)}
+>
 	<span class="visually-hidden">
 		{#if open}
 			Close menu
@@ -10,16 +17,19 @@
 			Open menu
 		{/if}
 	</span>
-	<span class="top" />
-	<span class="bottom" />
-	<span class="clockwise" />
-	<span class="counterwise" />
-</button>
+	<span class="hamburger" aria-hidden="true">
+		<span class="top" />
+		<span class="bottom" />
+		<span class="clockwise" />
+		<span class="counterwise" />
+	</span>
+</a>
 
 <style>
-	button {
+	a {
 		z-index: 4;
 		cursor: pointer;
+		pointer-events: auto;
 		appearance: none;
 		position: fixed;
 		left: 0;
@@ -33,16 +43,16 @@
 		transition: var(--transition-dom-x-ray), opacity 200ms var(--easing-standard);
 	}
 
-	button:active {
+	a:active {
 		background: none;
 	}
 
-	button:focus {
+	a:focus {
 		opacity: 1;
 	}
 
 	@media (hover: hover) {
-		button:hover {
+		a:hover {
 			opacity: 1;
 		}
 	}
@@ -73,8 +83,8 @@
 			transform var(--duration-menu) var(--easing-decelerate) var(--duration-menu),
 			opacity 0ms var(--duration-menu);
 	}
-	.open .top,
-	.open .bottom {
+	[aria-expanded='true'] .top,
+	[aria-expanded='true'] .bottom {
 		opacity: 0;
 		transform: translateY(0);
 		transition: var(--transition-dom-x-ray), transform var(--duration-menu) var(--easing-accelerate),
@@ -89,22 +99,27 @@
 	.clockwise {
 		opacity: 0;
 	}
-	.open .clockwise,
-	.open .counterwise {
+	[aria-expanded='true'] .clockwise,
+	[aria-expanded='true'] .counterwise {
 		opacity: 1;
 		transition: var(--transition-dom-x-ray),
 			transform var(--duration-menu) var(--easing-decelerate) var(--duration-menu),
 			opacity 0ms var(--duration-menu);
 	}
-	.open .clockwise {
+	[aria-expanded='true'] .clockwise {
 		transform: rotate(45deg);
 	}
-	.open .counterwise {
+	[aria-expanded='true'] .counterwise {
 		transform: rotate(-45deg);
 	}
 
+	:global(html.no-js):has(#navigation:target) a {
+		opacity: 0;
+		visibility: hidden;
+	}
+
 	@media print {
-		button {
+		a {
 			display: none;
 		}
 	}

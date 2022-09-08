@@ -48,4 +48,10 @@
 		height: 100%;
 		will-change: opacity, transform, filter;
 	}
+	:global(html.no-js):has(#navigation:target) .transition {
+		opacity: 0;
+		visibility: hidden;
+		transform: scale(0.9);
+		filter: blur(1rem);
+	}
 </style>

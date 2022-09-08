@@ -1,4 +1,5 @@
 <script>
+	import { page } from '$app/stores';
 	import MenuToggle from '$lib/MenuToggle.svelte';
 	import DarkModeToggle from '$lib/DarkModeToggle.svelte';
 
@@ -39,19 +40,17 @@
 
 <svelte:window on:keyup={(e) => onKeyUp(e)} />
 
-<MenuToggle bind:open />
-
-<nav class:open style={`--delay-out: ${durationIn}ms`}>
-	<ul>
+<nav>
+	<MenuToggle bind:open />
+	<ul id="navigation" hidden={!open} style={`--delay-out: ${durationOut}ms`}>
 		{#each navItems as { href, text }, i}
-			<li style={itemStyles(i)}>
+			<li style={itemStyles(i)} aria-current={$page.url.pathname === href ? 'page' : null}>
 				<a sveltekit:prefetch {href} on:click={() => (open = false)}>{text}</a>
 			</li>
 		{/each}
 	</ul>
+	<DarkModeToggle />
 </nav>
-
-<DarkModeToggle />
 
 <style>
 	nav {
@@ -62,27 +61,12 @@
 		flex-direction: column;
 		place-content: center;
 		align-items: center;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
+		inset: 0;
 		padding: 1rem;
 		font-size: 1.25rem;
 		line-height: 1;
 		letter-spacing: -0.05rem;
 		text-align: center;
-		will-change: opacity;
-		opacity: 0;
-		visibility: hidden;
-		transition: var(--transition-dom-x-ray), visibility 0ms linear var(--delay-out),
-			opacity 0ms linear var(--delay-out);
-	}
-
-	nav.open {
-		pointer-events: auto;
-		opacity: 1;
-		visibility: visible;
-		transition: var(--transition-dom-x-ray), visibility 0ms linear, opacity 0ms linear;
 	}
 
 	ul {
@@ -91,6 +75,18 @@
 		list-style: none;
 		padding: 0;
 		margin: 0;
+		will-change: opacity;
+		opacity: 0;
+		visibility: hidden;
+		transition: var(--transition-dom-x-ray), visibility 250ms linear var(--delay-out),
+			opacity 250ms linear var(--delay-out);
+	}
+	ul:not([hidden]),
+	:global(html.no-js) ul:target {
+		pointer-events: auto;
+		opacity: 1;
+		visibility: visible;
+		transition: var(--transition-dom-x-ray), visibility 250ms linear, opacity 250ms linear;
 	}
 
 	li {
@@ -107,7 +103,8 @@
 			transform var(--duration-out) ease-in-out var(--delay-out);
 	}
 
-	.open li {
+	ul:not([hidden]) li,
+	:global(html.no-js) ul:target li {
 		opacity: 1;
 		visibility: visible;
 		filter: blur(0);
@@ -122,13 +119,13 @@
 	a {
 		display: block;
 		background: none;
-		padding: 0.5rem 1rem;
+		padding: 0.5rem;
 		color: var(--color-h1);
 		will-change: opacity;
 		transition: var(--transition-dom-x-ray), opacity 0.5s ease-in-out;
 	}
 
-	nav:not(.open) a,
+	ul[hidden]:not(:target) a,
 	ul:focus-within a:not(:focus) {
 		opacity: 0.4;
 	}
