@@ -45,7 +45,7 @@
 	<ul id="navigation" hidden={!open} style={`--delay-out: ${durationOut}ms`}>
 		{#each navItems as { href, text }, i}
 			<li style={itemStyles(i)} aria-current={$page.url.pathname === href ? 'page' : null}>
-				<a sveltekit:prefetch {href} on:click={() => (open = false)}>{text}</a>
+				<a {href} on:click={() => (open = false)}>{text}</a>
 			</li>
 		{/each}
 	</ul>

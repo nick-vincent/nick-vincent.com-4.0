@@ -123,13 +123,13 @@
 			<ul class="inline">
 				{#if instagramUrl}<li><InstagramLink url={instagramUrl} /></li>{/if}
 				{#if previousUrl}<li>
-						<a sveltekit:prefetch href={previousUrl}>Prev</a>
+						<a href={previousUrl}>Prev</a>
 					</li>{/if}
 				{#if nextUrl}<li>
-						<a sveltekit:prefetch href={nextUrl}>Next</a>
+						<a href={nextUrl}>Next</a>
 					</li>{/if}
 				{#if backUrl}<li>
-						<a sveltekit:prefetch class="arrow-link" href={backUrl}>See all</a>
+						<a class="arrow-link" href={backUrl}>See all</a>
 					</li>{/if}
 			</ul>
 		{/if}

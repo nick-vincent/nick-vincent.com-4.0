@@ -29,7 +29,6 @@
 </script>
 
 <a
-	sveltekit:prefetch
 	href={url}
 	class:loaded
 	class:visible

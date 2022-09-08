@@ -12,16 +12,16 @@
 	<p>I’m also known to:</p>
 	<ul class="bullet">
 		<li>
-			<a sveltekit:prefetch class="arrow-link" href="/etcetera/faces/">make faces</a>
+			<a class="arrow-link" href="/etcetera/faces/">make faces</a>
 		</li>
 		<li>
-			<a sveltekit:prefetch class="arrow-link" href="/etcetera/photos/">snap photos</a>
+			<a class="arrow-link" href="/etcetera/photos/">snap photos</a>
 		</li>
 		<li>
-			<a sveltekit:prefetch class="arrow-link" href="/etcetera/strum/">strum tunes</a>
+			<a class="arrow-link" href="/etcetera/strum/">strum tunes</a>
 		</li>
 		<li>
-			<a sveltekit:prefetch class="arrow-link" href="/etcetera/rock/">rock out</a>
+			<a class="arrow-link" href="/etcetera/rock/">rock out</a>
 		</li>
 	</ul>
 
