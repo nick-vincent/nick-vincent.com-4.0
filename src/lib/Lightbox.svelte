@@ -5,11 +5,13 @@
 	import { createObserver } from 'svelte-use-io';
 	import { swipeable } from '$lib/swipeable';
 	import InstagramLink from '$lib/InstagramLink.svelte';
+	import FeedLink from '$lib/FeedLink.svelte';
 
 	export let image;
 	export let prevImage;
 	export let nextImage;
 	export let backUrl;
+	export let feedUrl;
 
 	const { id, title, date, caption, imageData } = image;
 	const { src, aspect } = imageData; // width & height are not working :(
@@ -96,6 +98,9 @@
 		{#if caption}<p class="caption">{caption}</p>{/if}
 		{#if id || prevImage || nextImage || backUrl}
 			<ul class="inline">
+				{#if feedUrl}
+					<li><FeedLink url={feedUrl} /></li>
+				{/if}
 				{#if id}
 					<li><InstagramLink url={`https://instagram.com/p/${id}`} /></li>
 				{/if}

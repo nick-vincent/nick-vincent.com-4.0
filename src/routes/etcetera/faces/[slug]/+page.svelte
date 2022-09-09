@@ -24,5 +24,11 @@
 </svelte:head>
 
 <Scroller width="40rem">
-	<Lightbox {image} {prevImage} {nextImage} backUrl="/etcetera/faces/" />
+	<Lightbox
+		{image}
+		{prevImage}
+		{nextImage}
+		backUrl="/etcetera/faces/"
+		feedUrl="/etcetera/faces/feed"
+	/>
 </Scroller>

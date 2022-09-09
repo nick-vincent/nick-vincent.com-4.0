@@ -1,6 +1,6 @@
 <script>
 	import Scroller from '$lib/Scroller.svelte';
-	import Image from '../img/nick-vincent.jpg?w=480&h=480&webp&meta=src';
+	import Image from '../img/nick-vincent.jpg?webp&w=480&h=480&meta=src';
 </script>
 
 <svelte:head>
