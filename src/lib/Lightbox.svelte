@@ -12,21 +12,15 @@
 	export let backUrl;
 
 	const { id, title, date, caption, imageData } = image;
-	const webp = imageData.default[0].src;
-	const png = imageData.default[1].src;
-
-	const { aspect, width, height } = imageData.default[0];
-
+	const { src, aspect } = imageData; // width & height are not working :(
 	const { observer } = createObserver();
 
 	let img;
-	let source;
 	let loaded = false;
 	let grabbing = false;
 
 	onMount(() => {
 		img.removeAttribute('src');
-		source.removeAttribute('srcset');
 	});
 
 	function onLoad() {
@@ -34,8 +28,7 @@
 	}
 
 	function onVisible() {
-		img.src = png;
-		source.srcset = webp;
+		img.src = src;
 	}
 
 	function onKeyUp(e) {
@@ -119,27 +112,22 @@
 		{/if}
 	</div>
 	<div class="left" style:aspect-ratio={aspect}>
-		<picture>
-			<source bind:this={source} type="image/webp" srcset={webp} />
-			<img
-				bind:this={img}
-				src={png}
-				{width}
-				{height}
-				alt={title}
-				class:loaded
-				class:grabbing
-				style:aspect-ratio={aspect}
-				on:load|once={onLoad}
-				use:observer={{ once: true }}
-				on:intersecting={onVisible}
-				use:swipeable
-				on:swipestart={onSwipeStart}
-				on:swipemove={(e) => onSwipeMove(e)}
-				on:swipecancel={(e) => onSwipeCancel(e)}
-				on:swipe={(e) => onSwipe(e)}
-			/>
-		</picture>
+		<img
+			bind:this={img}
+			{src}
+			alt={title}
+			class:loaded
+			class:grabbing
+			style:aspect-ratio={aspect}
+			on:load|once={onLoad}
+			use:observer={{ once: true }}
+			on:intersecting={onVisible}
+			use:swipeable
+			on:swipestart={onSwipeStart}
+			on:swipemove={(e) => onSwipeMove(e)}
+			on:swipecancel={(e) => onSwipeCancel(e)}
+			on:swipe={(e) => onSwipe(e)}
+		/>
 	</div>
 </div>
 

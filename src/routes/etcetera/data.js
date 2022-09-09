@@ -10,21 +10,21 @@ function loadFiles(folder) {
 		case 'photos':
 			thumbFiles = import.meta.glob('../../img/photos/*.jpg', {
 				eager: true,
-				as: 'w=280&h=280&format=webp;png&meta=src'
+				as: 'webp&w=280&h=280&meta=src'
 			});
 			imageFiles = import.meta.glob('../../img/photos/*.jpg', {
 				eager: true,
-				as: 'w=1920&h=1200&format=webp;png&quality=100&fit=inside&meta=src;aspect;width;height'
+				as: 'webp&width=1920&height=1200&quality=100&fit=inside&meta=src;aspect;width;height'
 			});
 			break;
 		case 'faces':
 			thumbFiles = import.meta.glob('../../img/faces/*.png', {
 				eager: true,
-				as: 'w=280&h=280&format=webp;png&meta=src'
+				as: 'webp&w=280&h=280&meta=src'
 			});
 			imageFiles = import.meta.glob('../../img/faces/*.png', {
 				eager: true,
-				as: 'w=1920&h=1200&format=webp;png&quality=100&fit=inside&meta=src;aspect;width;height'
+				as: 'webp&width=1920&height=1200&quality=100&fit=inside&meta=src;aspect;width;height'
 			});
 			break;
 	}
