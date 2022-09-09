@@ -3,7 +3,7 @@
 	import { spring } from 'svelte/motion';
 	import { onMount } from 'svelte';
 	import { createObserver } from 'svelte-use-io';
-	import { pannable } from '$lib/pannable';
+	import { swipeable } from '$lib/swipeable';
 	import InstagramLink from '$lib/InstagramLink.svelte';
 
 	export let image;
@@ -23,7 +23,6 @@
 	let source;
 	let loaded = false;
 	let grabbing = false;
-	let scrolling = undefined;
 
 	onMount(() => {
 		img.removeAttribute('src');
@@ -42,19 +41,13 @@
 	function onKeyUp(e) {
 		switch (e.key) {
 			case 'Escape':
-				if (backUrl) {
-					goto(backUrl);
-				}
+				if (backUrl) goto(backUrl);
 				break;
 			case 'ArrowLeft':
-				if (prevImage) {
-					goto(prevImage.url);
-				}
+				if (prevImage) goto(prevImage.url);
 				break;
 			case 'ArrowRight':
-				if (nextImage) {
-					goto(nextImage.url);
-				}
+				if (nextImage) goto(nextImage.url);
 				break;
 		}
 	}
@@ -67,45 +60,33 @@
 		}
 	);
 
-	function onPanStart(e) {
+	function onSwipeStart(e) {
 		grabbing = true;
-		scrolling = undefined;
 	}
-	function onPanMove(e) {
-		const { dx, dy, originalEvent } = e.detail;
-
-		if (scrolling === undefined) {
-			scrolling = Math.abs(dy) > Math.abs(dx);
-		}
-
-		if (scrolling) {
-			return;
-		} else {
-			originalEvent.preventDefault();
-		}
-
+	function onSwipeMove(e) {
+		const { dx } = e.detail;
 		coords.update(($coords) => ({
 			x: $coords.x + dx
 		}));
 	}
-	function onPanEnd(e) {
-		if (scrolling) {
-			scrolling = undefined;
-			return;
-		}
-
-		const { dx, time } = e.detail;
-		const swiped = time < 250 || Math.abs(dx) > img.clientWidth / 2;
-
+	function onSwipeCancel(e) {
 		grabbing = false;
-		scrolling = undefined;
+		const { dx, direction } = e.detail;
+		const swiped = Math.abs(dx) > img.clientWidth / 2;
 
-		if (swiped && dx < -10 && prevImage) {
-			goto(prevImage.url);
-		} else if (swiped && dx > 10 && nextImage) {
-			goto(nextImage.url);
+		if (swiped && direction === 'left') {
+			if (nextImage) goto(nextImage.url);
+		} else if (swiped && direction === 'right') {
+			if (prevImage) goto(prevImage.url);
 		} else {
 			coords.set({ x: 0 });
+		}
+	}
+	function onSwipe(e) {
+		if (e.detail.direction === 'left') {
+			if (nextImage) goto(nextImage.url);
+		} else {
+			if (prevImage) goto(prevImage.url);
 		}
 	}
 </script>
@@ -126,19 +107,13 @@
 					<li><InstagramLink url={`https://instagram.com/p/${id}`} /></li>
 				{/if}
 				{#if prevImage}
-					<li>
-						<a href={prevImage.url}>Prev</a>
-					</li>
+					<li><a href={prevImage.url}>Prev</a></li>
 				{/if}
 				{#if nextImage}
-					<li>
-						<a href={nextImage.url}>Next</a>
-					</li>
+					<li><a href={nextImage.url}>Next</a></li>
 				{/if}
 				{#if backUrl}
-					<li>
-						<a class="arrow-link" href={backUrl}>See all</a>
-					</li>
+					<li><a class="arrow-link" href={backUrl}>See all</a></li>
 				{/if}
 			</ul>
 		{/if}
@@ -158,11 +133,11 @@
 				on:load|once={onLoad}
 				use:observer={{ once: true }}
 				on:intersecting={onVisible}
-				use:pannable
-				on:panstart={onPanStart}
-				on:panmove={onPanMove}
-				on:panend={onPanEnd}
-				on:dragstart|preventDefault
+				use:swipeable
+				on:swipestart={onSwipeStart}
+				on:swipemove={(e) => onSwipeMove(e)}
+				on:swipecancel={(e) => onSwipeCancel(e)}
+				on:swipe={(e) => onSwipe(e)}
 			/>
 		</picture>
 	</div>
