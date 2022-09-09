@@ -10,21 +10,21 @@ function loadFiles(folder) {
 		case 'photos':
 			thumbFiles = import.meta.glob('../../img/photos/*.jpg', {
 				eager: true,
-				as: 'w=280&h=280&webp&meta=src'
+				as: 'w=280&h=280&format=webp;png&meta=src'
 			});
 			imageFiles = import.meta.glob('../../img/photos/*.jpg', {
 				eager: true,
-				as: 'w=1920&h=1200&webp&quality=100&fit=inside&meta=src;aspect;width;height'
+				as: 'w=1920&h=1200&format=webp;png&quality=100&fit=inside&meta=src;aspect;width;height'
 			});
 			break;
 		case 'faces':
 			thumbFiles = import.meta.glob('../../img/faces/*.png', {
 				eager: true,
-				as: 'w=280&h=280&webp&meta=src'
+				as: 'w=280&h=280&format=webp;png&meta=src'
 			});
 			imageFiles = import.meta.glob('../../img/faces/*.png', {
 				eager: true,
-				as: 'w=1920&h=1200&webp&quality=100&fit=inside&meta=src;aspect;width;height'
+				as: 'w=1920&h=1200&format=webp;png&quality=100&fit=inside&meta=src;aspect;width;height'
 			});
 			break;
 	}
@@ -48,11 +48,11 @@ export const getImageData = function (
 		const url = `/etcetera/${folder}/${slug}/`;
 		const date = dayjs(image.date).format('MMMM D, YYYY');
 		const path = `../../img/${folder}/${slug}.${extension}`;
-		const thumb = thumbFiles[path].src;
 		const title = titleTemplate(image.title);
 		const caption = captionTemplate(image.caption);
-		const { src, aspect, width, height } = imageFiles[path];
-		images[i] = { ...image, title, caption, slug, url, date, thumb, src, aspect, width, height };
+		const thumbData = thumbFiles[path];
+		const imageData = imageFiles[path];
+		images[i] = { ...image, title, caption, slug, url, date, thumbData, imageData };
 	}
 	return images;
 };

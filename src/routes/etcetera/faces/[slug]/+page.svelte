@@ -15,7 +15,7 @@
 	const index = images.indexOf(image);
 	const prevImage = images[index - 1] || images[images.length - 1];
 	const nextImage = images[index + 1] || images[0];
-	const { id, title, date, caption, src, aspect, width, height } = image;
+	const { title, caption } = image;
 </script>
 
 <svelte:head>
@@ -24,17 +24,5 @@
 </svelte:head>
 
 <Scroller width="40rem">
-	<Lightbox
-		{src}
-		{date}
-		{title}
-		{caption}
-		{width}
-		{height}
-		{aspect}
-		backUrl="/etcetera/faces/"
-		nextUrl={nextImage.url}
-		previousUrl={prevImage.url}
-		instagramUrl={`https://instagram.com/p/${id}`}
-	/>
+	<Lightbox {image} {prevImage} {nextImage} backUrl="/etcetera/faces/" />
 </Scroller>

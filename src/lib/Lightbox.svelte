@@ -6,28 +6,28 @@
 	import { pannable } from '$lib/pannable';
 	import InstagramLink from '$lib/InstagramLink.svelte';
 
-	export let src;
-	export let title;
-	export let date;
-	export let caption;
-	export let width;
-	export let height;
-	export let aspect;
-
+	export let image;
+	export let prevImage;
+	export let nextImage;
 	export let backUrl;
-	export let nextUrl;
-	export let previousUrl;
-	export let instagramUrl;
+
+	const { id, title, date, caption, imageData } = image;
+	const webp = imageData.default[0].src;
+	const png = imageData.default[1].src;
+
+	const { aspect, width, height } = imageData.default[0];
 
 	const { observer } = createObserver();
 
 	let img;
+	let source;
 	let loaded = false;
 	let grabbing = false;
 	let scrolling = undefined;
 
 	onMount(() => {
 		img.removeAttribute('src');
+		source.removeAttribute('srcset');
 	});
 
 	function onLoad() {
@@ -35,7 +35,8 @@
 	}
 
 	function onVisible() {
-		img.src = src;
+		img.src = png;
+		source.srcset = webp;
 	}
 
 	function onKeyUp(e) {
@@ -46,13 +47,13 @@
 				}
 				break;
 			case 'ArrowLeft':
-				if (previousUrl) {
-					goto(previousUrl);
+				if (prevImage) {
+					goto(prevImage.url);
 				}
 				break;
 			case 'ArrowRight':
-				if (nextUrl) {
-					goto(nextUrl);
+				if (nextImage) {
+					goto(nextImage.url);
 				}
 				break;
 		}
@@ -99,10 +100,10 @@
 		grabbing = false;
 		scrolling = undefined;
 
-		if (swiped && dx < -10 && previousUrl) {
-			goto(previousUrl);
-		} else if (swiped && dx > 10 && nextUrl) {
-			goto(nextUrl);
+		if (swiped && dx < -10 && prevImage) {
+			goto(prevImage.url);
+		} else if (swiped && dx > 10 && nextImage) {
+			goto(nextImage.url);
 		} else {
 			coords.set({ x: 0 });
 		}
@@ -119,40 +120,51 @@
 		{#if title}<h1>{title}</h1>{/if}
 		{#if date}<p class="date">{date}</p>{/if}
 		{#if caption}<p class="caption">{caption}</p>{/if}
-		{#if instagramUrl || backUrl}
+		{#if id || prevImage || nextImage || backUrl}
 			<ul class="inline">
-				{#if instagramUrl}<li><InstagramLink url={instagramUrl} /></li>{/if}
-				{#if previousUrl}<li>
-						<a href={previousUrl}>Prev</a>
-					</li>{/if}
-				{#if nextUrl}<li>
-						<a href={nextUrl}>Next</a>
-					</li>{/if}
-				{#if backUrl}<li>
+				{#if id}
+					<li><InstagramLink url={`https://instagram.com/p/${id}`} /></li>
+				{/if}
+				{#if prevImage}
+					<li>
+						<a href={prevImage.url}>Prev</a>
+					</li>
+				{/if}
+				{#if nextImage}
+					<li>
+						<a href={nextImage.url}>Next</a>
+					</li>
+				{/if}
+				{#if backUrl}
+					<li>
 						<a class="arrow-link" href={backUrl}>See all</a>
-					</li>{/if}
+					</li>
+				{/if}
 			</ul>
 		{/if}
 	</div>
 	<div class="left" style:aspect-ratio={aspect}>
-		<img
-			bind:this={img}
-			{src}
-			{width}
-			{height}
-			alt={title}
-			class:loaded
-			class:grabbing
-			style:aspect-ratio={aspect}
-			on:load|once={onLoad}
-			use:observer={{ once: true }}
-			on:intersecting={onVisible}
-			use:pannable
-			on:panstart={onPanStart}
-			on:panmove={onPanMove}
-			on:panend={onPanEnd}
-			on:dragstart|preventDefault
-		/>
+		<picture>
+			<source bind:this={source} type="image/webp" srcset={webp} />
+			<img
+				bind:this={img}
+				src={png}
+				{width}
+				{height}
+				alt={title}
+				class:loaded
+				class:grabbing
+				style:aspect-ratio={aspect}
+				on:load|once={onLoad}
+				use:observer={{ once: true }}
+				on:intersecting={onVisible}
+				use:pannable
+				on:panstart={onPanStart}
+				on:panmove={onPanMove}
+				on:panend={onPanEnd}
+				on:dragstart|preventDefault
+			/>
+		</picture>
 	</div>
 </div>
 

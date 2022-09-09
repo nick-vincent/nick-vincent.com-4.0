@@ -2,20 +2,23 @@
 	import { onMount } from 'svelte';
 	import { createObserver } from 'svelte-use-io';
 
-	export let url;
-	export let src;
-	export let alt;
+	export let image;
 
+	const { title, url, thumbData } = image;
+	const webp = thumbData.default[0].src;
+	const png = thumbData.default[1].src;
 	const { observer } = createObserver();
 	const rotation = (Math.random() - 0.5) * 45;
 
 	let img;
+	let source;
 	let visible = false;
 	let loaded = false;
 
 	onMount(() => {
 		img.removeAttribute('src');
 		img.removeAttribute('loading');
+		source.removeAttribute('srcset');
 	});
 
 	function onLoad() {
@@ -24,7 +27,8 @@
 
 	function onVisible() {
 		visible = true;
-		img.src = src;
+		img.src = png;
+		source.srcset = webp;
 	}
 </script>
 
@@ -36,7 +40,18 @@
 	use:observer={{ once: true }}
 	on:intersecting={onVisible}
 >
-	<img bind:this={img} {src} {alt} width="280" height="280" loading="lazy" on:load|once={onLoad} />
+	<picture>
+		<source bind:this={source} type="image/webp" srcset={webp} />
+		<img
+			bind:this={img}
+			src={png}
+			alt={title}
+			width="280"
+			height="280"
+			loading="lazy"
+			on:load|once={onLoad}
+		/>
+	</picture>
 </a>
 
 <style>
