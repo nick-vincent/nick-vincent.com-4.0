@@ -45,28 +45,12 @@
 
 	<hr />
 
-	<p>This website features:</p>
-	<ul class="bullet">
-		<li>
-			<a href="https://kit.svelte.dev" class="arrow-link" rel="external" target="_blank"
-				>sveltekit</a
-			>
-		</li>
-		<li>
-			<a
-				class="arrow-link"
-				href="https://css-tricks.com/snippets/css/system-font-stack/"
-				rel="external"
-				target="_blank">system fonts</a
-			>
-		</li>
-		<li>
-			<a
-				class="arrow-link"
-				href="https://css-tricks.com/dark-modes-with-css/"
-				rel="external"
-				target="_blank">dark mode</a
-			>
-		</li>
-	</ul>
+	<p>
+		This site was built with <a
+			href="https://kit.svelte.dev"
+			class="arrow-link"
+			rel="external"
+			target="_blank">SvelteKit</a
+		>
+	</p>
 </Scroller>

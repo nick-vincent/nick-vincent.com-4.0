@@ -139,7 +139,7 @@
 <style>
 	h1 {
 		font-size: 1.5rem;
-		letter-spacing: -0.025rem;
+		letter-spacing: -0.05rem;
 	}
 
 	.lightbox {

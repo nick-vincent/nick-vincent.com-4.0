@@ -27,13 +27,12 @@
 	h1 {
 		margin: 0;
 		text-align: center;
-		font-size: 2.8rem;
+		font-size: 2.5rem;
 	}
 
 	p {
-		text-align: center;
 		margin: 0;
-		font-size: 1.1rem;
+		text-align: center;
 	}
 
 	img {
