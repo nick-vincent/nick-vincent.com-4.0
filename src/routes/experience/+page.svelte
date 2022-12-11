@@ -10,7 +10,8 @@
 	<h1>Experience</h1>
 
 	<h2>
-		<a class="arrow-link" href="https://squareup.com" rel="external" target="_blank">Square, Inc.</a
+		<a class="arrow-link" href="https://squareup.com" rel="external noreferrer" target="_blank"
+			>Square, Inc.</a
 		>
 	</h2>
 	<p>Senior Frontend Engineer</p>
@@ -28,7 +29,7 @@
 	<hr />
 
 	<h2>
-		<a class="arrow-link" href="https://www.zappos.com" rel="external" target="_blank"
+		<a class="arrow-link" href="https://www.zappos.com" rel="external noreferrer" target="_blank"
 			>Zappos Labs</a
 		>
 	</h2>
@@ -38,8 +39,11 @@
 	<hr />
 
 	<h2>
-		<a class="arrow-link" href="https://nickvincent.carbonmade.com" rel="external" target="_blank"
-			>Self-Employed</a
+		<a
+			class="arrow-link"
+			href="https://nickvincent.carbonmade.com"
+			rel="external noreferrer"
+			target="_blank">Self-Employed</a
 		>
 	</h2>
 	<p>Freelance Client Work</p>
@@ -48,8 +52,11 @@
 	<hr />
 
 	<h2>
-		<a class="arrow-link" href="https://www.rrpartners.com" rel="external" target="_blank"
-			>R&R Partners</a
+		<a
+			class="arrow-link"
+			href="https://www.rrpartners.com"
+			rel="external noreferrer"
+			target="_blank">R&R Partners</a
 		>
 	</h2>
 	<p>Web Developer</p>
@@ -58,7 +65,9 @@
 	<hr />
 
 	<h2>
-		<a class="arrow-link" href="http://eatdrink.com" rel="external" target="_blank">Eatdrink</a>
+		<a class="arrow-link" href="http://eatdrink.com" rel="external noreferrer" target="_blank"
+			>Eatdrink</a
+		>
 	</h2>
 	<p>Web / Interactive Lead</p>
 	<p class="date">Mar 2006 - Apr 2009</p>

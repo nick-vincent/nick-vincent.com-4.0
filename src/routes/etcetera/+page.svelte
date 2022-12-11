@@ -32,7 +32,7 @@
 		<a
 			class="arrow-link"
 			href="https://chrome.google.com/webstore/detail/dom-x-ray/olfkgegmjhgehnakignkabhbdchkhnkj"
-			rel="external"
+			rel="external noreferrer"
 			target="_blank">DOM X-Ray</a
 		><br />
 		a dev tool to see<br />
@@ -49,7 +49,7 @@
 		This site was built with <a
 			href="https://kit.svelte.dev"
 			class="arrow-link"
-			rel="external"
+			rel="external noreferrer"
 			target="_blank">SvelteKit</a
 		>
 	</p>
