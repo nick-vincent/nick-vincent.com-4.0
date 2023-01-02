@@ -14,6 +14,26 @@ button {
 	border: none;
 }
 
+a::before,
+button::before {
+	z-index: -1;
+	content: '';
+	display: block;
+	position: absolute;
+	inset: -0.25em -0.5em;
+	background: var(--color-focus-highlight);
+	border-radius: 0.5em;
+	border: 0.05rem solid var(--color-focus-highlight);
+	scale: 0;
+	opacity: 0;
+	transition: var(--transition-dom-x-ray), scale 150ms ease, opacity 150ms ease;
+}
+a:focus-visible:before,
+button:focus-visible:before {
+	scale: 1;
+	opacity: 1;
+}
+
 .arrow-link::after {
 	pointer-events: none;
 	content: '→';
@@ -26,13 +46,6 @@ button {
 	transition: var(--transition-dom-x-ray),
 		opacity var(--duration-arrow-out) var(--easing-accelerate),
 		transform var(--duration-arrow-out) var(--easing-arrow-out);
-}
-
-.arrow-link:focus-visible::after {
-	opacity: 1;
-	transform: translateX(0.15em);
-	transition: var(--transition-dom-x-ray), opacity var(--duration-arrow-in) var(--easing-decelerate),
-		transform var(--duration-arrow-in) var(--easing-arrow-in);
 }
 
 @media (hover: hover) {

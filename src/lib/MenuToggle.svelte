@@ -47,6 +47,10 @@
 		background: none;
 	}
 
+	a::before {
+		inset: 0.5em;
+	}
+
 	a:focus {
 		opacity: 1;
 	}

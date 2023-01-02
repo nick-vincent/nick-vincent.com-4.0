@@ -12,7 +12,8 @@
 	--light-color-line: rgba(0, 0, 0, 0.1);
 	--light-color-bullet: rgba(0, 0, 0, 0.2);
 	--light-color-arrow: rgba(0, 0, 0, 0.2);
-	--light-image-filter: saturate(110%);
+	--light-color-focus-highlight: rgba(60, 120, 180, 0.15);
+	--light-image-filter: saturate(100%);
 	--light-body-gradient: radial-gradient(
 		circle at center 8rem,
 		rgba(255, 255, 255, 0.75),
@@ -27,11 +28,12 @@
 	--dark-color-text: rgba(255, 255, 255, 0.65);
 	--dark-color-h1: rgba(255, 255, 255, 0.75);
 	--dark-color-h2: rgba(255, 255, 255, 0.7);
-	--dark-color-link: rgb(94, 167, 255, 0.75);
+	--dark-color-link: rgba(94, 167, 255, 0.75);
 	--dark-color-date: rgba(255, 255, 255, 0.35);
 	--dark-color-line: rgba(255, 255, 255, 0.1);
 	--dark-color-bullet: rgba(255, 255, 255, 0.25);
 	--dark-color-arrow: rgba(255, 255, 255, 0.15);
+	--dark-color-focus-highlight: rgba(94, 167, 255, 0.1);
 	--dark-image-filter: saturate(90%);
 	--dark-body-gradient: radial-gradient(
 		circle at center 8rem,
@@ -58,6 +60,7 @@
 	--color-line: var(--light-color-line);
 	--color-bullet: var(--light-color-bullet);
 	--color-arrow: var(--light-color-arrow);
+	--color-focus-highlight: var(--light-color-focus-highlight);
 	--image-filter: var(--light-image-filter);
 	--light-body-gradient-opacity: 1;
 	--dark-body-gradient-opacity: 0;
@@ -82,6 +85,7 @@
 		--color-line: var(--dark-color-line);
 		--color-bullet: var(--dark-color-bullet);
 		--color-arrow: var(--dark-color-arrow);
+		--color-focus-highlight: var(--dark-color-focus-highlight);
 		--image-filter: var(--dark-image-filter);
 		--light-body-gradient-opacity: 0;
 		--dark-body-gradient-opacity: 1;
@@ -102,6 +106,7 @@
 		--color-line: black;
 		--color-bullet: black;
 		--color-arrow: black;
+		--color-focus-highlight: transparent;
 		--image-filter: none;
 		--light-body-gradient-opacity: 0;
 		--dark-body-gradient-opacity: 0;
@@ -121,6 +126,7 @@
 	--color-line: var(--light-color-line);
 	--color-bullet: var(--light-color-bullet);
 	--color-arrow: var(--light-color-arrow);
+	--color-focus-highlight: var(--light-color-focus-highlight);
 	--image-filter: var(--light-image-filter);
 	--light-body-gradient-opacity: 1;
 	--dark-body-gradient-opacity: 0;
@@ -139,6 +145,7 @@
 	--color-line: var(--dark-color-line);
 	--color-bullet: var(--dark-color-bullet);
 	--color-arrow: var(--dark-color-arrow);
+	--color-focus-highlight: var(--dark-color-focus-highlight);
 	--image-filter: var(--dark-image-filter);
 	--light-body-gradient-opacity: 0;
 	--dark-body-gradient-opacity: 1;

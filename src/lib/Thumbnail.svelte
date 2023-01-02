@@ -78,6 +78,9 @@
 		aspect-ratio: 1;
 		border-radius: 0.5rem;
 	}
+	a::before {
+		display: none;
+	}
 
 	.card {
 		--scale: 1;

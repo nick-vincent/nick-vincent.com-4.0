@@ -117,7 +117,7 @@
 	}
 
 	a {
-		display: block;
+		display: inline-block;
 		background: none;
 		padding: 0.5rem;
 		color: var(--color-h1);
@@ -125,8 +125,11 @@
 		transition: var(--transition-dom-x-ray), opacity 0.5s ease-in-out;
 	}
 
-	ul[hidden]:not(:target) a,
-	ul:focus-within a:not(:focus) {
+	a::before {
+		inset: -0.175em -0.25em;
+	}
+
+	ul[hidden]:not(:target) a {
 		opacity: 0.4;
 	}
 

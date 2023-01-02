@@ -72,6 +72,10 @@
 		opacity: 1;
 	}
 
+	button::before {
+		inset: 0.5em;
+	}
+
 	@media (hover: hover) {
 		button:hover {
 			opacity: 1;

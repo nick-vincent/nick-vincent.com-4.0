@@ -18,6 +18,9 @@
 		line-height: 1rem;
 		display: inline-block;
 	}
+	a::before {
+		inset: -0.5em;
+	}
 	svg {
 		display: inline-block;
 		width: 1rem;
