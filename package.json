@@ -7,7 +7,8 @@
 		"build": "vite build",
 		"preview": "vite preview",
 		"lint": "prettier --check . && eslint .",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"postbuild": "npx svelte-sitemap --domain https://nick-vincent.com"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-static": "^1.0.0-next.39",
@@ -20,6 +21,7 @@
 		"prettier-plugin-svelte": "^2.7.0",
 		"slugify": "^1.6.5",
 		"svelte": "^3.44.0",
+		"svelte-sitemap": "^2.5.4",
 		"svelte-use-io": "^1.3.0",
 		"vite": "^4.0.0",
 		"vite-imagetools": "^4.0.4"
