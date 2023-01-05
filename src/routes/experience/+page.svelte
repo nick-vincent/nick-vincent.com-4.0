@@ -60,12 +60,14 @@
 
 	<h2>
 		<a class="arrow-link" href="https://www.zappos.com" rel="external noreferrer" target="_blank"
-			>Zappos Labs</a
+			>Zappos.com</a
 		>
 	</h2>
 	<p>Senior Developer</p>
 	<p class="date">May 2011 – Apr 2014</p>
-	<p>Lead UX design and UI development on assorted e‑commerce experiments</p>
+	<p>
+		Lead UX design and UI development on assorted e‑commerce experiments for SF‑based incubation lab
+	</p>
 	<hr />
 
 	<h2>
@@ -78,7 +80,7 @@
 	</h2>
 	<p>Freelance Client Work</p>
 	<p class="date">Apr 2010 – May 2011</p>
-	<p>Left advertising, traveled the US, and took on various design jobs</p>
+	<p>Left advertising, traveled the US, and took on various design gigs</p>
 
 	<hr />
 
