@@ -10,21 +10,46 @@
 	<h1>Experience</h1>
 
 	<h2>
-		<a class="arrow-link" href="https://squareup.com" rel="external noreferrer" target="_blank"
-			>Square, Inc.</a
+		<a class="arrow-link" href="https://block.xyz" rel="external noreferrer" target="_blank"
+			>Block, Inc.</a
 		>
 	</h2>
 	<p>Senior Frontend Engineer</p>
 	<p class="date">Apr 2014 – Present</p>
-	<p>Frontend engineering lead on:</p>
+	<p>
+		Currently using <a href="https://stenciljs.com" rel="external noreferrer" target="_blank"
+			>Stencil</a
+		>
+		to construct cross‑framework Web&nbsp;Components for Market, Square’s shared design system used across
+		an ever‑increasing multitude of web applications
+	</p>
+	<p>
+		Previously for <a href="https://squareup.com" rel="external noreferrer" target="_blank"
+			>Square</a
+		>:
+	</p>
 	<ul class="bullet spread">
-		<li>Shared navigation library featured on global marketing website and various subsites</li>
 		<li>
-			Design system framework powering marketing website, support center, hardware e-commerce store,
-			and other public-facing web properties
+			Built out header navigation for global marketing website and various subsites as an internal
+			npm library using <a href="https://svelte.dev" rel="external noreferrer" target="_blank"
+				>Svelte</a
+			>
 		</li>
-		<li>Integration of marketing website with 3rd-party headless content management system</li>
-		<li>Hardware store build on open source e-commerce platform</li>
+		<li>
+			Authored and maintained the internal <a
+				href="https://rubyonrails.org"
+				rel="external noreferrer"
+				target="_blank">Rails</a
+			> library housing the design system powering the global marketing website, support center, hardware
+			e‑commerce store, and other public‑facing web properties
+		</li>
+		<li>
+			Rebuilt the global marketing website to integrate with <a
+				href="https://contentful.com"
+				rel="external noreferrer"
+				target="_blank">Contentful</a
+			> to move content management out of code and into the hands of product teams and content authors
+		</li>
 	</ul>
 	<hr />
 
@@ -35,7 +60,7 @@
 	</h2>
 	<p>Senior Developer</p>
 	<p class="date">May 2011 – Apr 2014</p>
-	<p>Lead UX design and UI development on various e-commerce experiments</p>
+	<p>Lead UX design and UI development on various e‑commerce experiments</p>
 	<hr />
 
 	<h2>
@@ -48,6 +73,7 @@
 	</h2>
 	<p>Freelance Client Work</p>
 	<p class="date">Apr 2010 – May 2011</p>
+	<p>Left advertising, traveled the US, and took on various design jobs</p>
 
 	<hr />
 
@@ -61,6 +87,10 @@
 	</h2>
 	<p>Web Developer</p>
 	<p class="date">Apr 2009 – Apr 2010</p>
+	<p>
+		Flash websites and client pitches for the Vegas‑based traditional ad agency responsible for
+		“What Happens Here, Stays Here”
+	</p>
 
 	<hr />
 
@@ -69,10 +99,10 @@
 			>Eatdrink</a
 		>
 	</h2>
-	<p>Web / Interactive Lead</p>
-	<p class="date">Mar 2006 - Apr 2009</p>
-	<p>Web Designer / Developer</p>
-	<p class="date">Sep 2003 - Mar 2006</p>
-	<p>Web Intern</p>
-	<p class="date">Mar 2003 - Sep 2003</p>
+	<p>Web Intern to Interactive Lead</p>
+	<p class="date">Mar 2003 - Apr 2009</p>
+	<p>
+		“The Web Guy” at a Vegas‑based boutique creative agency known for animation, motion graphics,
+		illustration, and band websites
+	</p>
 </Scroller>
